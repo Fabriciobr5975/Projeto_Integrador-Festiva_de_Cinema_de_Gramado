@@ -4,6 +4,12 @@
  */
 package telas;
 
+import dao.FestivalCinemaGramadoDao;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+
 /**
  *
  * @author arauj
@@ -27,9 +33,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
             mnuSubmissaoFilmes.setVisible(false);
 
         } else if (tipoUsu.equalsIgnoreCase("Cineasta")) {
-            itmBuscarUsuario.setVisible(false);
-            itmListarUsuario.setVisible(false);
-            itmExcluirUsuario.setVisible(false);
+            //itmBuscarUsuario.setVisible(false);
+            //itmListarUsuario.setVisible(false);
+            //itmExcluirUsuario.setVisible(false);
 
         } else if (tipoUsu.equalsIgnoreCase("Avaliador")) {
             itmBuscarUsuario.setVisible(false);
@@ -86,16 +92,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnuUsuario.setText("Usuario");
 
         itmAlterarInfoUsuario.setText("Alterar Informações");
+        itmAlterarInfoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmAlterarInfoUsuarioActionPerformed(evt);
+            }
+        });
         mnuUsuario.add(itmAlterarInfoUsuario);
         mnuUsuario.add(jSeparator1);
 
         itmBuscarUsuario.setText("Buscar");
+        itmBuscarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmBuscarUsuarioActionPerformed(evt);
+            }
+        });
         mnuUsuario.add(itmBuscarUsuario);
 
         itmListarUsuario.setText("Listar");
         mnuUsuario.add(itmListarUsuario);
 
         itmExcluirUsuario.setText("Excluir");
+        itmExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmExcluirUsuarioActionPerformed(evt);
+            }
+        });
         mnuUsuario.add(itmExcluirUsuario);
 
         jMenuBar1.add(mnuUsuario);
@@ -164,6 +185,90 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void itmCadastrarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmCadastrarEventosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itmCadastrarEventosActionPerformed
+
+    private void itmBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmBuscarUsuarioActionPerformed
+        String cpfUsu;
+
+        cpfUsu = JOptionPane.showInputDialog(null, "Digite o CPF do usuário", "Buscar Usuário", JOptionPane.INFORMATION_MESSAGE);
+
+        try {
+            ResultSet usuario = new FestivalCinemaGramadoDao().buscarUsuario(cpfUsu);
+
+            if (usuario.next()) {
+                String nome, sobrenome, cpf, email, senha, tipoUsu;
+
+                nome = usuario.getString("nome_usu");
+                sobrenome = usuario.getString("sobrenome_usu");
+                cpf = usuario.getString("cpf_usu");
+                email = usuario.getString("email_usu");
+                senha = usuario.getString("senha_usu");
+                tipoUsu = usuario.getString("tipo_usu");
+
+                JOptionPane.showMessageDialog(null, "Usuário: " + nome + " " + sobrenome
+                        + "\n" + "CPF: " + cpf
+                        + "\n" + "E-Mail: " + email
+                        + "\n" + "Senha: " + senha
+                        + "\n" + "Tipo de Usuário: " + tipoUsu);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario não encontrado", "Buscar Usuário", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+
+    }//GEN-LAST:event_itmBuscarUsuarioActionPerformed
+
+    private void itmAlterarInfoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAlterarInfoUsuarioActionPerformed
+        String cpfUsu;
+
+        cpfUsu = JOptionPane.showInputDialog(null, "Digite o seu CPF para entrar no campo alterar!", "Alterar Dados", JOptionPane.INFORMATION_MESSAGE);
+
+        try {
+            ResultSet usuario = new FestivalCinemaGramadoDao().buscarUsuario(cpfUsu);
+
+            if (usuario.next()) {
+                String nome, sobrenome, cpf, email, senha, tipoUsu;
+
+                nome = usuario.getString("nome_usu");
+                sobrenome = usuario.getString("sobrenome_usu");
+                cpf = usuario.getString("cpf_usu");
+                email = usuario.getString("email_usu");
+                senha = usuario.getString("senha_usu");
+                tipoUsu = usuario.getString("tipo_usu");
+
+                new AlterarDadosUsuario(nome, sobrenome, cpf, email, senha, tipoUsu).setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario não encontrado", "Buscar Usuário", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_itmAlterarInfoUsuarioActionPerformed
+
+    private void itmExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExcluirUsuarioActionPerformed
+        String cpf;
+
+        cpf = JOptionPane.showInputDialog(null, "Digite o CPF do usuário para excluí-lo", "Exluir Usuário", JOptionPane.INFORMATION_MESSAGE);
+
+        try {
+            int resultado = new FestivalCinemaGramadoDao().excluirUsuario(cpf);
+
+            if (resultado == 1) {
+                JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso", "Excluir Usuário", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário não encontrado", "Excluir Usuário", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+
+    }//GEN-LAST:event_itmExcluirUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

@@ -15,26 +15,22 @@ import java.sql.ResultSet;
  * @author arauj
  */
 public class FestivalCinemaGramadoDao {
+
     // Variável para se conectar;
     Connection conectar;
 
     private void conectar() throws ClassNotFoundException, SQLException {
-        // Conectar ao Banco de dados XAMPP;
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/festival", "root", "");
-        
-        /*
-        Conectar ao Banco de Dados azure;
+        // Conectar ao Banco de Dados azure;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        String url = "jdbc:mysql://bdfestival-cinema-gramado.mysql.database.azure.com:3306/<database>?useSSL=true";
-        conectar = DriverManager.getConnection(url, "usuario", "senha");
-        */
+        String url = "jdbc:mysql://bdfestival-cinema-gramado.mysql.database.azure.com:3306/festival?useSSL=true";
+        conectar = DriverManager.getConnection(url, "rootfabricio", "@Festival7458");
+        
     }
 
-    public void cadastrarUsuarios(String nome, String sobrenome, String email, String senha, String cpf, String tipo) throws ClassNotFoundException, SQLException{
+    public void cadastrarUsuarios(String nome, String sobrenome, String email, String senha, String cpf, String tipo) throws ClassNotFoundException, SQLException {
         conectar();
-        
-        PreparedStatement st = conectar.prepareStatement("INSERT INTO usuarios VALUES(?,?,?,?,?,?)");
+
+        PreparedStatement st = conectar.prepareStatement("INSERT INTO usuario VALUES(?,?,?,?,?,?)");
         st.setString(1, cpf);
         st.setString(2, nome);
         st.setString(3, sobrenome);
@@ -45,14 +41,47 @@ public class FestivalCinemaGramadoDao {
 
     }
 
-    public ResultSet loginUsuario(String email, String senha) throws ClassNotFoundException, SQLException{
+    public ResultSet loginUsuario(String email, String senha) throws ClassNotFoundException, SQLException {
         conectar();
-        
-        PreparedStatement st = conectar.prepareStatement("SELECT * FROM usuarios WHERE email=? AND senha=?");
+
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM usuario WHERE email_usu = ? AND senha_usu = ?");
         st.setString(1, email);
         st.setString(2, senha);
         ResultSet usuario = st.executeQuery();
-        
+
         return usuario;
     }
+
+    public ResultSet buscarUsuario(String cpf) throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM usuario WHERE cpf_usu = ?");
+        st.setString(1, cpf);
+        ResultSet usuario = st.executeQuery();
+
+        return usuario;
+
+    }
+
+    public void alterarUsuario(String nome, String sobrenome, String senha, String cpf) throws ClassNotFoundException, SQLException{
+        conectar();
+        
+        PreparedStatement st = conectar.prepareStatement("UPDATE usuario SET nome_usu = ?, sobrenome_usu = ?, senha_usu = ? WHERE cpf_usu = ?");
+        st.setString(1, nome);
+        st.setString(2, sobrenome);
+        st.setString(3, senha);
+        st.setString(4, cpf);
+        st.executeUpdate();
+    }
+    
+    public int excluirUsuario(String cpf) throws ClassNotFoundException, SQLException{
+        conectar();
+        
+        PreparedStatement st = conectar.prepareStatement("DELETE FROM usuario WHERE cpf_usu = ?");
+        st.setString(1, cpf);
+        int retorno = st.executeUpdate();
+        
+        return retorno;
+    }
+
 }

@@ -13,6 +13,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alterar Informa&#xe7;&#xf5;es"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmAlterarInfoUsuarioActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
             </MenuItem>
@@ -20,6 +23,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmBuscarUsuarioActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itmListarUsuario">
               <Properties>
@@ -30,6 +36,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmExcluirUsuarioActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -49,11 +58,72 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Submiss&#xe3;o de Filmes"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itmCadastrarFilme">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadastrar Filme"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itmListarFilme">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar Filme"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator3">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itmAlterarFilme">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alterar Filme"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itmBuscarFilme">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar Filme"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itmExcluirFilme">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir Filme"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuEventosParalelos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eventos Paralelos"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itmCadastrarEventos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadastrar Eventos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmCadastrarEventosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itmListarEventos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar Eventos"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itmAlterarEventos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alterar Eventos"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itmBuscarEventos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar Eventos"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itmExcluirEventos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir Eventos"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuMaisInformacoes">
           <Properties>

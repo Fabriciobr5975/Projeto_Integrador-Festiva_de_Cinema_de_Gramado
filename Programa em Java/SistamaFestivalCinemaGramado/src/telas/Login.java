@@ -101,12 +101,9 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Usuário não identificado");
             }
 
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
-        }
-
+        } 
     }//GEN-LAST:event_btnEntrar4ActionPerformed
 
     private void bntAbrirTelaCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAbrirTelaCadastroActionPerformed

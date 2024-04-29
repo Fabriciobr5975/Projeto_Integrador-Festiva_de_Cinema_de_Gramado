@@ -13,6 +13,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alterar Informa&#xe7;&#xf5;es"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmAlterarInfoUsuarioActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
             </MenuItem>
@@ -20,6 +23,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmBuscarUsuarioActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itmListarUsuario">
               <Properties>
@@ -30,6 +36,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmExcluirUsuarioActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
