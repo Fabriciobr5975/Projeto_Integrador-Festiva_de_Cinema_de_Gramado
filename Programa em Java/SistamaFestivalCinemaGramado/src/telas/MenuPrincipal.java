@@ -59,7 +59,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnuProgramacaoFilmes = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         mnuSubmissaoFilmes = new javax.swing.JMenu();
+        itmCadastrarFilme = new javax.swing.JMenuItem();
+        itmListarFilme = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        itmAlterarFilme = new javax.swing.JMenuItem();
+        itmBuscarFilme = new javax.swing.JMenuItem();
+        itmExcluirFilme = new javax.swing.JMenuItem();
         mnuEventosParalelos = new javax.swing.JMenu();
+        itmCadastrarEventos = new javax.swing.JMenuItem();
+        itmListarEventos = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        itmAlterarEventos = new javax.swing.JMenuItem();
+        itmBuscarEventos = new javax.swing.JMenuItem();
+        itmExcluirEventos = new javax.swing.JMenuItem();
         mnuMaisInformacoes = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,9 +108,48 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(mnuProgramacaoFilmes);
 
         mnuSubmissaoFilmes.setText("Submissão de Filmes");
+
+        itmCadastrarFilme.setText("Cadastrar Filme");
+        mnuSubmissaoFilmes.add(itmCadastrarFilme);
+
+        itmListarFilme.setText("Listar Filme");
+        mnuSubmissaoFilmes.add(itmListarFilme);
+        mnuSubmissaoFilmes.add(jSeparator3);
+
+        itmAlterarFilme.setText("Alterar Filme");
+        mnuSubmissaoFilmes.add(itmAlterarFilme);
+
+        itmBuscarFilme.setText("Buscar Filme");
+        mnuSubmissaoFilmes.add(itmBuscarFilme);
+
+        itmExcluirFilme.setText("Excluir Filme");
+        mnuSubmissaoFilmes.add(itmExcluirFilme);
+
         jMenuBar1.add(mnuSubmissaoFilmes);
 
         mnuEventosParalelos.setText("Eventos Paralelos");
+
+        itmCadastrarEventos.setText("Cadastrar Eventos");
+        itmCadastrarEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmCadastrarEventosActionPerformed(evt);
+            }
+        });
+        mnuEventosParalelos.add(itmCadastrarEventos);
+
+        itmListarEventos.setText("Listar Eventos");
+        mnuEventosParalelos.add(itmListarEventos);
+        mnuEventosParalelos.add(jSeparator2);
+
+        itmAlterarEventos.setText("Alterar Eventos");
+        mnuEventosParalelos.add(itmAlterarEventos);
+
+        itmBuscarEventos.setText("Buscar Eventos");
+        mnuEventosParalelos.add(itmBuscarEventos);
+
+        itmExcluirEventos.setText("Excluir Eventos");
+        mnuEventosParalelos.add(itmExcluirEventos);
+
         jMenuBar1.add(mnuEventosParalelos);
 
         mnuMaisInformacoes.setText("Mais Informações");
@@ -109,6 +160,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(820, 536));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void itmCadastrarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmCadastrarEventosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itmCadastrarEventosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,14 +201,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itmAlterarEventos;
+    private javax.swing.JMenuItem itmAlterarFilme;
     private javax.swing.JMenuItem itmAlterarInfoUsuario;
+    private javax.swing.JMenuItem itmBuscarEventos;
+    private javax.swing.JMenuItem itmBuscarFilme;
     private javax.swing.JMenuItem itmBuscarUsuario;
+    private javax.swing.JMenuItem itmCadastrarEventos;
+    private javax.swing.JMenuItem itmCadastrarFilme;
+    private javax.swing.JMenuItem itmExcluirEventos;
+    private javax.swing.JMenuItem itmExcluirFilme;
     private javax.swing.JMenuItem itmExcluirUsuario;
+    private javax.swing.JMenuItem itmListarEventos;
+    private javax.swing.JMenuItem itmListarFilme;
     private javax.swing.JMenuItem itmListarUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JMenu mnuEventosParalelos;
     private javax.swing.JMenu mnuMaisInformacoes;
     private javax.swing.JMenu mnuProgramacaoFilmes;
