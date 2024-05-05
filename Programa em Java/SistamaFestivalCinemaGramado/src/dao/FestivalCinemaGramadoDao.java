@@ -15,7 +15,6 @@ import java.sql.ResultSet;
  * @author arauj
  */
 public class FestivalCinemaGramadoDao {
-
     // Variável para se conectar;
     Connection conectar;
 
@@ -24,7 +23,6 @@ public class FestivalCinemaGramadoDao {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         String url = "jdbc:mysql://bdfestival-cinema-gramado.mysql.database.azure.com:3306/festival?useSSL=true";
         conectar = DriverManager.getConnection(url, "rootfabricio", "@Festival7458");
-        
     }
 
     public void cadastrarUsuarios(String nome, String sobrenome, String email, String senha, String cpf, String tipo) throws ClassNotFoundException, SQLException {
@@ -82,6 +80,32 @@ public class FestivalCinemaGramadoDao {
         int retorno = st.executeUpdate();
         
         return retorno;
+    }
+
+    public void submiterFilmes(String filme, String duracao, String classificao, String genero, String nome, String sobrenome, String informacoes ) throws ClassNotFoundException, SQLException{
+        conectar();
+        
+        PreparedStatement st = conectar.prepareStatement("INSERT INTO submissao_filmes VALUES (?, ?, ?, ?, ?, ?, ?)");
+        st.setString(1, filme);
+        st.setString(2, duracao);
+        st.setString(3, classificao);
+        st.setString(4, genero);
+        st.setString(5, nome);
+        st.setString(6, sobrenome);
+        st.setString(7, informacoes);
+        st.executeUpdate();
+  
+    }
+    
+    public ResultSet buscarFilme(int cod) throws ClassNotFoundException, SQLException{
+        conectar();
+        
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM submissao_filme WHERE id_sub_film = ?");
+        st.setInt(1, cod);
+        ResultSet filme = st.executeQuery();
+        
+        return filme;
+    
     }
 
 }

@@ -64,6 +64,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         itmExcluirUsuario = new javax.swing.JMenuItem();
         mnuProgramacaoFilmes = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        itmBuscarProgramacao = new javax.swing.JMenuItem();
+        itmAlterarProgramacao = new javax.swing.JMenuItem();
+        itmExcluirProgramacao = new javax.swing.JMenuItem();
         mnuSubmissaoFilmes = new javax.swing.JMenu();
         itmCadastrarFilme = new javax.swing.JMenuItem();
         itmListarFilme = new javax.swing.JMenuItem();
@@ -125,12 +129,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuItem1.setText("Ver Filmes");
         mnuProgramacaoFilmes.add(jMenuItem1);
+        mnuProgramacaoFilmes.add(jSeparator4);
+
+        itmBuscarProgramacao.setText("Buscar");
+        mnuProgramacaoFilmes.add(itmBuscarProgramacao);
+
+        itmAlterarProgramacao.setText("Alterar");
+        mnuProgramacaoFilmes.add(itmAlterarProgramacao);
+
+        itmExcluirProgramacao.setText("Excluir");
+        mnuProgramacaoFilmes.add(itmExcluirProgramacao);
 
         jMenuBar1.add(mnuProgramacaoFilmes);
 
         mnuSubmissaoFilmes.setText("Submissão de Filmes");
 
         itmCadastrarFilme.setText("Cadastrar Filme");
+        itmCadastrarFilme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmCadastrarFilmeActionPerformed(evt);
+            }
+        });
         mnuSubmissaoFilmes.add(itmCadastrarFilme);
 
         itmListarFilme.setText("Listar Filme");
@@ -141,6 +160,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnuSubmissaoFilmes.add(itmAlterarFilme);
 
         itmBuscarFilme.setText("Buscar Filme");
+        itmBuscarFilme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmBuscarFilmeActionPerformed(evt);
+            }
+        });
         mnuSubmissaoFilmes.add(itmBuscarFilme);
 
         itmExcluirFilme.setText("Excluir Filme");
@@ -270,6 +294,48 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_itmExcluirUsuarioActionPerformed
 
+    private void itmCadastrarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmCadastrarFilmeActionPerformed
+        new CadastrarSubmissaoFilmes().setVisible(true);
+    }//GEN-LAST:event_itmCadastrarFilmeActionPerformed
+
+    private void itmBuscarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmBuscarFilmeActionPerformed
+        int codFilme;
+
+        codFilme = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o código do filme para a busca", "Buscar Filme", JOptionPane.INFORMATION_MESSAGE));
+
+        try {
+            ResultSet filme = new FestivalCinemaGramadoDao().buscarFilme(codFilme);
+            
+            if(filme.next()){
+                   String id, film, duracao, classificacao, genero, nomeDiretor, sobrenomeDiretor, informacoes;
+                   
+                   id = filme.getString("id_sub_film");
+                   film = filme.getString("nome_sub_film");
+                   duracao = filme.getString("duracao_sub_film");
+                   classificacao = filme.getString("faixa_etaria_sub_film");
+                   genero = filme.getString("categoria_sub_film");
+                   nomeDiretor = filme.getString("nome_diretor_sub_film");
+                   sobrenomeDiretor = filme.getString("sobrenome_diretor_sub_film");
+                   informacoes = filme.getString("info_sub_film");
+                   
+                   JOptionPane.showMessageDialog(null, "ID: " + id 
+                           + "\n" + "Nome do filme: " + film 
+                           + "\n" + "Duração: " + duracao 
+                           + "\n" + "Classificação: " + classificacao 
+                           + "\n" + "Gênero: " + genero 
+                           + "\n" + "Nome do diretor: " + nomeDiretor 
+                           + "\n" + "Sobrenome do diretor: " + sobrenomeDiretor 
+                           + "\n" + "Informações adicionais: " + informacoes);
+                   
+            } else {
+                JOptionPane.showMessageDialog(null, "Filme não encontrado", "Buscar Filme", JOptionPane.WARNING_MESSAGE);
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_itmBuscarFilmeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -309,13 +375,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itmAlterarEventos;
     private javax.swing.JMenuItem itmAlterarFilme;
     private javax.swing.JMenuItem itmAlterarInfoUsuario;
+    private javax.swing.JMenuItem itmAlterarProgramacao;
     private javax.swing.JMenuItem itmBuscarEventos;
     private javax.swing.JMenuItem itmBuscarFilme;
+    private javax.swing.JMenuItem itmBuscarProgramacao;
     private javax.swing.JMenuItem itmBuscarUsuario;
     private javax.swing.JMenuItem itmCadastrarEventos;
     private javax.swing.JMenuItem itmCadastrarFilme;
     private javax.swing.JMenuItem itmExcluirEventos;
     private javax.swing.JMenuItem itmExcluirFilme;
+    private javax.swing.JMenuItem itmExcluirProgramacao;
     private javax.swing.JMenuItem itmExcluirUsuario;
     private javax.swing.JMenuItem itmListarEventos;
     private javax.swing.JMenuItem itmListarFilme;
@@ -326,6 +395,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JMenu mnuEventosParalelos;
     private javax.swing.JMenu mnuMaisInformacoes;
     private javax.swing.JMenu mnuProgramacaoFilmes;

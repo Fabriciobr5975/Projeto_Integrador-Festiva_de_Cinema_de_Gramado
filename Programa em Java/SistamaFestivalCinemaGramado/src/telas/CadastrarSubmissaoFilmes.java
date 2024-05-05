@@ -4,6 +4,10 @@
  */
 package telas;
 
+import dao.FestivalCinemaGramadoDao;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ruan.lviana
@@ -50,7 +54,7 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
         lblFilme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblFilme.setText("Filme:");
         getContentPane().add(lblFilme);
-        lblFilme.setBounds(40, 60, 50, 40);
+        lblFilme.setBounds(30, 30, 50, 40);
 
         txtFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,12 +62,12 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFilme);
-        txtFilme.setBounds(90, 60, 550, 40);
+        txtFilme.setBounds(90, 30, 620, 40);
 
         lblDuracao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDuracao.setText("Duração:");
         getContentPane().add(lblDuracao);
-        lblDuracao.setBounds(40, 130, 54, 40);
+        lblDuracao.setBounds(30, 100, 80, 40);
 
         txtDuracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,12 +75,12 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtDuracao);
-        txtDuracao.setBounds(100, 130, 120, 40);
+        txtDuracao.setBounds(100, 100, 110, 40);
 
         lblClassificacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblClassificacao.setText("Classificação:");
         getContentPane().add(lblClassificacao);
-        lblClassificacao.setBounds(230, 130, 80, 40);
+        lblClassificacao.setBounds(230, 100, 90, 40);
 
         txtClassificacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,12 +88,12 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtClassificacao);
-        txtClassificacao.setBounds(320, 130, 110, 40);
+        txtClassificacao.setBounds(330, 100, 110, 40);
 
         lblGenero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblGenero.setText("Gênero:");
         getContentPane().add(lblGenero);
-        lblGenero.setBounds(440, 130, 60, 40);
+        lblGenero.setBounds(460, 100, 60, 40);
 
         txtGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,12 +101,12 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtGenero);
-        txtGenero.setBounds(500, 130, 140, 40);
+        txtGenero.setBounds(520, 100, 190, 40);
 
         lblSobrenomeDiretor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblSobrenomeDiretor.setText("Sobrenome Diretor:");
         getContentPane().add(lblSobrenomeDiretor);
-        lblSobrenomeDiretor.setBounds(310, 200, 120, 40);
+        lblSobrenomeDiretor.setBounds(350, 170, 140, 40);
 
         txtNomeDiretor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +114,7 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeDiretor);
-        txtNomeDiretor.setBounds(130, 200, 170, 40);
+        txtNomeDiretor.setBounds(140, 170, 190, 40);
 
         txtSobrenomeDiretor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,30 +122,35 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSobrenomeDiretor);
-        txtSobrenomeDiretor.setBounds(440, 200, 200, 40);
+        txtSobrenomeDiretor.setBounds(490, 170, 220, 40);
 
         lblInformacoes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblInformacoes.setText("Informações:");
         getContentPane().add(lblInformacoes);
-        lblInformacoes.setBounds(40, 300, 90, 40);
+        lblInformacoes.setBounds(20, 270, 90, 40);
 
         lblNomeDiretor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblNomeDiretor.setText("Nome Diretor:");
         getContentPane().add(lblNomeDiretor);
-        lblNomeDiretor.setBounds(40, 200, 90, 40);
+        lblNomeDiretor.setBounds(30, 170, 90, 40);
 
         txtInformacoes.setColumns(20);
         txtInformacoes.setRows(5);
         jScrollPane1.setViewportView(txtInformacoes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(130, 270, 510, 120);
+        jScrollPane1.setBounds(130, 270, 580, 120);
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(250, 430, 230, 50);
+        btnSalvar.setBounds(270, 450, 230, 50);
 
-        setSize(new java.awt.Dimension(730, 559));
+        setSize(new java.awt.Dimension(770, 559));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -168,6 +177,50 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
     private void txtSobrenomeDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSobrenomeDiretorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSobrenomeDiretorActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        String filme, duracao, classificacao, genero, nomeDiretor, sobrenomeDiretor, informacoes;
+
+        filme = txtFilme.getText();
+        duracao = txtDuracao.getText();
+        classificacao = txtClassificacao.getText();
+        genero = txtGenero.getText();
+        nomeDiretor = txtNomeDiretor.getText();
+        sobrenomeDiretor = txtSobrenomeDiretor.getText();
+        informacoes = txtInformacoes.getText();
+
+        try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
+            new FestivalCinemaGramadoDao().submiterFilmes(filme, duracao, classificacao, genero, filme, sobrenomeDiretor, informacoes);
+
+            // Mensagem para dizer que o filme foi cadastro;
+            JOptionPane.showMessageDialog(null, "Filme cadastro com sucesso", "Cadastro do Filme", JOptionPane.INFORMATION_MESSAGE);
+
+            // Limpar a tela e reposicionar o cursor do mouse;
+            txtFilme.setText("");
+            txtDuracao.setText("");
+            txtClassificacao.setText("");
+            txtGenero.setText("");
+            txtNomeDiretor.setText("");
+            txtSobrenomeDiretor.setText("");
+            txtInformacoes.setText("");
+            txtFilme.requestFocus();
+
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+
+        } catch (SQLException ex) {
+            String erro = ex.getMessage();
+
+            if (erro.contains("Duplicate entry")) {
+                JOptionPane.showMessageDialog(null, "Outro usuário já foi cadastro com esse CPF", "Erro no cadastro", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+            }
+        }
+
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
