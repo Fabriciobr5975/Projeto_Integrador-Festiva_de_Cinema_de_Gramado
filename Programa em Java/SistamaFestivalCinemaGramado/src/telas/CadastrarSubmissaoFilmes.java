@@ -190,6 +190,7 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         String cod, filme, duracao, classificacao, genero, nomeDiretor, sobrenomeDiretor, informacoes;
         
+        // Pegando as informações dos campos;
         cod = txtCod.getText();
         filme = txtFilme.getText();
         duracao = txtDuracao.getText();
