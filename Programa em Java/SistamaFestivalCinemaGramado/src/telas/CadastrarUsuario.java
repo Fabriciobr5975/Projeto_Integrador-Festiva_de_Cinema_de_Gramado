@@ -99,7 +99,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(649, 338));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    // cadastro do usuário
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         String nome, sobrenome, cpf, email, senha, tipoUsu;
 
