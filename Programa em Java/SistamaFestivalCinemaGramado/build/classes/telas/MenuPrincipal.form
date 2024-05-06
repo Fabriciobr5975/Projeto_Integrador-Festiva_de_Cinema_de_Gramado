@@ -47,26 +47,31 @@
             <Property name="text" type="java.lang.String" value="Programa&#xe7;&#xe3;o dos Filmes"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="itmCadastrarProgramacao">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ver Filmes"/>
+                <Property name="text" type="java.lang.String" value="Cadastrar Programa&#xe7;&#xe3;o"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itmListarProgramacao">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar Programa&#xe7;&#xe3;o"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator4">
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itmBuscarProgramacao">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itmAlterarProgramacao">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Alterar"/>
+                <Property name="text" type="java.lang.String" value="Alterar Programa&#xe7;&#xe3;o"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itmBuscarProgramacao">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar Programa&#xe7;&#xe3;o"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itmExcluirProgramacao">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Excluir"/>
+                <Property name="text" type="java.lang.String" value="Excluir Programa&#xe7;&#xe3;o"/>
               </Properties>
             </MenuItem>
           </SubComponents>
