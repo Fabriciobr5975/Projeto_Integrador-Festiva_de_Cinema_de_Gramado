@@ -4,6 +4,12 @@
  */
 package telas;
 
+import dao.FestivalCinemaGramadoDao;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ruan.lviana
@@ -15,6 +21,33 @@ public class ListarSubmissaoFilmes extends javax.swing.JFrame {
      */
     public ListarSubmissaoFilmes() {
         initComponents();
+        listarSubmissaoFilmes();
+    }
+
+    public void listarSubmissaoFilmes() {
+        try {
+
+            ResultSet submissao = new FestivalCinemaGramadoDao().listarSubmissaoFilmes();
+
+            DefaultTableModel tblModelo = (DefaultTableModel) tblSubmissaoFilmes.getModel();
+            tblModelo.setRowCount(0);
+
+            while (submissao.next()) {
+                String[] linha = {
+                    submissao.getString("nome_sub_film"),
+                    submissao.getString("duracao_sub_film"),
+                    submissao.getString("categoria_sub_film"),
+                    submissao.getString("faixa_etaria_sub_film"),
+                    submissao.getString("nome_diretor_sub_film"),
+                    submissao.getString("sobrenome_diretor_sub_film"),
+                    submissao.getString("info_sub_film")};
+
+                tblModelo.addRow(linha);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
     }
 
     /**
@@ -78,6 +111,11 @@ public class ListarSubmissaoFilmes extends javax.swing.JFrame {
         txtFilme.setBounds(150, 40, 550, 40);
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnBuscar);
         btnBuscar.setBounds(780, 40, 210, 40);
 
@@ -88,6 +126,37 @@ public class ListarSubmissaoFilmes extends javax.swing.JFrame {
     private void txtFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilmeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFilmeActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String nomeFilme;
+        
+        nomeFilme = txtFilme.getText();
+        
+        try {
+
+            ResultSet submissao = new FestivalCinemaGramadoDao().listarSubmissaoPorNome(nomeFilme);
+
+            DefaultTableModel tblModelo = (DefaultTableModel) tblSubmissaoFilmes.getModel();
+            tblModelo.setRowCount(0);
+
+            while (submissao.next()) {
+                String[] linha = {
+                    submissao.getString("nome_sub_film"),
+                    submissao.getString("duracao_sub_film"),
+                    submissao.getString("categoria_sub_film"),
+                    submissao.getString("faixa_etaria_sub_film"),
+                    submissao.getString("nome_diretor_sub_film"),
+                    submissao.getString("sobrenome_diretor_sub_film"),
+                    submissao.getString("info_sub_film")};
+
+                tblModelo.addRow(linha);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments

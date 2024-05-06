@@ -158,10 +158,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnuSubmissaoFilmes.add(itmCadastrarFilme);
 
         itmListarFilme.setText("Listar Filme");
+        itmListarFilme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmListarFilmeActionPerformed(evt);
+            }
+        });
         mnuSubmissaoFilmes.add(itmListarFilme);
         mnuSubmissaoFilmes.add(jSeparator3);
 
         itmAlterarFilme.setText("Alterar Filme");
+        itmAlterarFilme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmAlterarFilmeActionPerformed(evt);
+            }
+        });
         mnuSubmissaoFilmes.add(itmAlterarFilme);
 
         itmBuscarFilme.setText("Buscar Filme");
@@ -342,8 +352,43 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmBuscarFilmeActionPerformed
 
     private void itmListarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmListarUsuarioActionPerformed
-       
+        new ListarUsuario().setVisible(true);
     }//GEN-LAST:event_itmListarUsuarioActionPerformed
+
+    private void itmListarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmListarFilmeActionPerformed
+       new ListarSubmissaoFilmes().setVisible(true);
+    }//GEN-LAST:event_itmListarFilmeActionPerformed
+
+    private void itmAlterarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAlterarFilmeActionPerformed
+         String codFilme;
+
+        codFilme = JOptionPane.showInputDialog(null, "Digite o código do filme para a busca", "Buscar Filme", JOptionPane.INFORMATION_MESSAGE);
+
+        try {
+            ResultSet filme = new FestivalCinemaGramadoDao().buscarFilme(codFilme);
+            
+            if(filme.next()){
+                   String id, film, duracao, classificacao, genero, nomeDiretor, sobrenomeDiretor, informacoes;
+                   
+                   id = filme.getString("id_sub_film");
+                   film = filme.getString("nome_sub_film");
+                   duracao = filme.getString("duracao_sub_film");
+                   classificacao = filme.getString("faixa_etaria_sub_film");
+                   genero = filme.getString("categoria_sub_film");
+                   nomeDiretor = filme.getString("nome_diretor_sub_film");
+                   sobrenomeDiretor = filme.getString("sobrenome_diretor_sub_film");
+                   informacoes = filme.getString("info_sub_film");
+                   
+                  new AlterarSubmissaoFilmes(id, film, duracao, classificacao, genero, nomeDiretor, sobrenomeDiretor, informacoes).setVisible(true);
+                   
+            } else {
+                JOptionPane.showMessageDialog(null, "Filme não encontrado", "Buscar Filme", JOptionPane.WARNING_MESSAGE);
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_itmAlterarFilmeActionPerformed
 
     /**
      * @param args the command line arguments

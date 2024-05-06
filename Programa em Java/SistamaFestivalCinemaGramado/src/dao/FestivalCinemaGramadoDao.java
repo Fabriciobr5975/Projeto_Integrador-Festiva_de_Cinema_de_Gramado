@@ -89,8 +89,8 @@ public class FestivalCinemaGramadoDao {
         PreparedStatement st = conectar.prepareStatement("INSERT INTO submissao_filme VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         st.setString(1, cod);
         st.setString(2, filme);
-        st.setString(3, genero);
-        st.setString(4, classificao);
+        st.setString(3, classificao);
+        st.setString(4, genero);
         st.setString(5, duracao);
         st.setString(6, nome);
         st.setString(7, sobrenome);
@@ -107,6 +107,62 @@ public class FestivalCinemaGramadoDao {
         ResultSet filme = st.executeQuery();
 
         return filme;
+
+    }
+
+    public ResultSet listarUsuario() throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM usuario");
+        ResultSet usuario = st.executeQuery();
+
+        return usuario;
+    }
+
+    public ResultSet listarUsuarioPorNome(String nome) throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM usuario WHERE nome_usu LIKE ?");
+        st.setString(1, "%" + nome + "%");
+        ResultSet usuario = st.executeQuery();
+
+        return usuario;
+    }
+
+    public ResultSet listarSubmissaoFilmes() throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM submissao_filme");
+        ResultSet submissao = st.executeQuery();
+
+        return submissao;
+    }
+
+    public ResultSet listarSubmissaoPorNome(String nome) throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM submissao_filme WHERE nome_sub_film LIKE ?");
+        st.setString(1, "%" + nome + "%");
+        ResultSet submissao = st.executeQuery();
+
+        return submissao;
+    }
+
+    public void alterarSubmissaoFilmes(String cod, String filme, String duracao, String classificao, String genero, String nome, String sobrenome, String informacoes) throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("UPDATE submissao_filme SET "
+                + "nome_sub_film = ?, categoria_sub_film = ?, faixa_etaria_sub_film = ?,  duracao_sub_film = ?,  "
+                + "nome_diretor_sub_film = ?, sobrenome_diretor_sub_film = ?,  info_sub_film = ? WHERE id_sub_film = ?");
+        st.setString(1, filme);
+        st.setString(2, classificao);
+        st.setString(3, genero);
+        st.setString(4, duracao);
+        st.setString(5, nome);
+        st.setString(6, sobrenome);
+        st.setString(7, informacoes);
+        st.setString(8, cod);
+        st.executeUpdate();
 
     }
 

@@ -4,6 +4,12 @@
  */
 package telas;
 
+import dao.FestivalCinemaGramadoDao;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ruan.lviana
@@ -15,6 +21,32 @@ public class ListarUsuario extends javax.swing.JFrame {
      */
     public ListarUsuario() {
         initComponents();
+       listarUsuario();
+    }
+    
+    public void listarUsuario(){
+        try {
+            
+            ResultSet usuario = new FestivalCinemaGramadoDao().listarUsuario();
+            
+            DefaultTableModel tblModelo = (DefaultTableModel) tblBuscar.getModel();
+            tblModelo.setRowCount(0);
+            
+            while(usuario.next()){
+            String[] linha = {
+                usuario.getString("cpf_usu"), 
+                usuario.getString("nome_usu"), 
+                usuario.getString("sobrenome_usu"), 
+                usuario.getString("email_usu"), 
+                usuario.getString("senha_usu"), 
+                usuario.getString("tipo_usu")};
+                
+                tblModelo.addRow(linha);
+        }
+  
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null , "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
     }
 
     /**
@@ -38,7 +70,7 @@ public class ListarUsuario extends javax.swing.JFrame {
 
         lblNome.setText("Nome:");
         getContentPane().add(lblNome);
-        lblNome.setBounds(140, 50, 60, 30);
+        lblNome.setBounds(40, 40, 60, 40);
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,11 +78,16 @@ public class ListarUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNome);
-        txtNome.setBounds(190, 50, 310, 40);
+        txtNome.setBounds(100, 40, 790, 40);
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnBuscar);
-        btnBuscar.setBounds(660, 50, 160, 40);
+        btnBuscar.setBounds(930, 40, 160, 40);
 
         tblBuscar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,6 +128,36 @@ public class ListarUsuario extends javax.swing.JFrame {
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+       String nome;
+      
+       nome = txtNome.getText();
+       
+       try {
+            
+            ResultSet usuario = new FestivalCinemaGramadoDao().listarUsuarioPorNome(nome);
+            
+            DefaultTableModel tblModelo = (DefaultTableModel) tblBuscar.getModel();
+            tblModelo.setRowCount(0);
+            
+            while(usuario.next()){
+            String[] linha = {
+                usuario.getString("cpf_usu"), 
+                usuario.getString("nome_usu"), 
+                usuario.getString("sobrenome_usu"), 
+                usuario.getString("email_usu"), 
+                usuario.getString("senha_usu"), 
+                usuario.getString("tipo_usu")};
+                
+                tblModelo.addRow(linha);
+        }
+  
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null , "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+       
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments

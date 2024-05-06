@@ -4,6 +4,10 @@
  */
 package telas;
 
+import dao.FestivalCinemaGramadoDao;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ruan.lviana
@@ -15,6 +19,21 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
      */
     public AlterarSubmissaoFilmes() {
         initComponents();
+    }
+    
+    public AlterarSubmissaoFilmes(String cod, String filme, String duracao, String classificacao, String genero, String nomeDiretor, String sobrenomeDiretor, String informacoes) {
+        initComponents();
+    
+        txtCod.setText(cod);
+        txtCod.setEnabled(false);
+        txtFilme.setText(filme);
+        txtDuracao.setText(duracao);
+        txtClassificacao.setText(classificacao);
+        txtGenero.setText(genero);
+        txtNomeDiretor.setText(nomeDiretor);
+        txtSobrenomeDiretor.setText(sobrenomeDiretor);
+        txtInformacoes.setText(informacoes);
+        
     }
 
     /**
@@ -42,6 +61,8 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtInformacoes = new javax.swing.JTextArea();
         btnSalvar = new javax.swing.JButton();
+        lblCod = new javax.swing.JLabel();
+        txtCod = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alteração Subimissão de filmes");
@@ -138,8 +159,20 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
         jScrollPane1.setBounds(130, 270, 510, 120);
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSalvar);
         btnSalvar.setBounds(250, 430, 230, 50);
+
+        lblCod.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCod.setText("Código:");
+        getContentPane().add(lblCod);
+        lblCod.setBounds(40, 10, 70, 40);
+        getContentPane().add(txtCod);
+        txtCod.setBounds(100, 10, 410, 40);
 
         setSize(new java.awt.Dimension(730, 559));
         setLocationRelativeTo(null);
@@ -168,6 +201,36 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
     private void txtSobrenomeDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSobrenomeDiretorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSobrenomeDiretorActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+     String cod, filme, duracao, classificacao, genero, nomeDiretor, sobrenomeDiretor, informacoes;
+        
+        // Pegando as informações dos campos;
+        cod = txtCod.getText();
+        filme = txtFilme.getText();
+        duracao = txtDuracao.getText();
+        classificacao = txtClassificacao.getText();
+        genero = txtGenero.getText();
+        nomeDiretor = txtNomeDiretor.getText();
+        sobrenomeDiretor = txtSobrenomeDiretor.getText();
+        informacoes = txtInformacoes.getText();
+
+        try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
+            new FestivalCinemaGramadoDao().alterarSubmissaoFilmes(cod, filme, duracao, classificacao, genero, filme, sobrenomeDiretor, informacoes);
+
+            // Mensagem para dizer que o filme foi cadastro;
+            JOptionPane.showMessageDialog(null, "Filme alterado com sucesso", "Alteração de Filme", JOptionPane.INFORMATION_MESSAGE);
+
+            // Limpar a tela e reposicionar o cursor do mouse;
+            dispose();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+
+        } 
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,6 +271,7 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblClassificacao;
+    private javax.swing.JLabel lblCod;
     private javax.swing.JLabel lblDuracao;
     private javax.swing.JLabel lblFilme;
     private javax.swing.JLabel lblGenero;
@@ -215,6 +279,7 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
     private javax.swing.JLabel lblNomeDiretor;
     private javax.swing.JLabel lblSobrenomeDiretor;
     private javax.swing.JTextField txtClassificacao;
+    private javax.swing.JTextField txtCod;
     private javax.swing.JTextField txtDuracao;
     private javax.swing.JTextField txtFilme;
     private javax.swing.JTextField txtGenero;
