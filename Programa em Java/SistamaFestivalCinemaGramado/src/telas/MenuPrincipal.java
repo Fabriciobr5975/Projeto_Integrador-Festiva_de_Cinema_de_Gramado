@@ -63,11 +63,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         itmListarUsuario = new javax.swing.JMenuItem();
         itmExcluirUsuario = new javax.swing.JMenuItem();
         mnuProgramacaoFilmes = new javax.swing.JMenu();
-        itmCadastrarProgramacao = new javax.swing.JMenuItem();
-        itmListarProgramacao = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        itmAlterarProgramacao = new javax.swing.JMenuItem();
         itmBuscarProgramacao = new javax.swing.JMenuItem();
+        itmAlterarProgramacao = new javax.swing.JMenuItem();
         itmExcluirProgramacao = new javax.swing.JMenuItem();
         mnuSubmissaoFilmes = new javax.swing.JMenu();
         itmCadastrarFilme = new javax.swing.JMenuItem();
@@ -114,6 +113,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnuUsuario.add(itmBuscarUsuario);
 
         itmListarUsuario.setText("Listar");
+        itmListarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmListarUsuarioActionPerformed(evt);
+            }
+        });
         mnuUsuario.add(itmListarUsuario);
 
         itmExcluirUsuario.setText("Excluir");
@@ -128,20 +132,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         mnuProgramacaoFilmes.setText("Programação dos Filmes");
 
-        itmCadastrarProgramacao.setText("Cadastrar Programação");
-        mnuProgramacaoFilmes.add(itmCadastrarProgramacao);
-
-        itmListarProgramacao.setText("Listar Programação");
-        mnuProgramacaoFilmes.add(itmListarProgramacao);
+        jMenuItem1.setText("Ver Filmes");
+        mnuProgramacaoFilmes.add(jMenuItem1);
         mnuProgramacaoFilmes.add(jSeparator4);
 
-        itmAlterarProgramacao.setText("Alterar Programação");
-        mnuProgramacaoFilmes.add(itmAlterarProgramacao);
-
-        itmBuscarProgramacao.setText("Buscar Programação");
+        itmBuscarProgramacao.setText("Buscar");
         mnuProgramacaoFilmes.add(itmBuscarProgramacao);
 
-        itmExcluirProgramacao.setText("Excluir Programação");
+        itmAlterarProgramacao.setText("Alterar");
+        mnuProgramacaoFilmes.add(itmAlterarProgramacao);
+
+        itmExcluirProgramacao.setText("Excluir");
         mnuProgramacaoFilmes.add(itmExcluirProgramacao);
 
         jMenuBar1.add(mnuProgramacaoFilmes);
@@ -303,9 +304,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmCadastrarFilmeActionPerformed
 
     private void itmBuscarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmBuscarFilmeActionPerformed
-        int codFilme;
+        String codFilme;
 
-        codFilme = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o código do filme para a busca", "Buscar Filme", JOptionPane.INFORMATION_MESSAGE));
+        codFilme = JOptionPane.showInputDialog(null, "Digite o código do filme para a busca", "Buscar Filme", JOptionPane.INFORMATION_MESSAGE);
 
         try {
             ResultSet filme = new FestivalCinemaGramadoDao().buscarFilme(codFilme);
@@ -339,6 +340,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
         }
     }//GEN-LAST:event_itmBuscarFilmeActionPerformed
+
+    private void itmListarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmListarUsuarioActionPerformed
+       
+    }//GEN-LAST:event_itmListarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -386,17 +391,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itmBuscarUsuario;
     private javax.swing.JMenuItem itmCadastrarEventos;
     private javax.swing.JMenuItem itmCadastrarFilme;
-    private javax.swing.JMenuItem itmCadastrarProgramacao;
     private javax.swing.JMenuItem itmExcluirEventos;
     private javax.swing.JMenuItem itmExcluirFilme;
     private javax.swing.JMenuItem itmExcluirProgramacao;
     private javax.swing.JMenuItem itmExcluirUsuario;
     private javax.swing.JMenuItem itmListarEventos;
     private javax.swing.JMenuItem itmListarFilme;
-    private javax.swing.JMenuItem itmListarProgramacao;
     private javax.swing.JMenuItem itmListarUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;

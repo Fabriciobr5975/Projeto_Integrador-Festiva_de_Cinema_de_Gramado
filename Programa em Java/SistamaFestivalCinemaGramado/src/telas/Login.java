@@ -92,7 +92,7 @@ public class Login extends javax.swing.JFrame {
             if (usuario.next()) {
                 String tipoUsu;
 
-                tipoUsu = usuario.getString("tipo_Usu");
+                tipoUsu = usuario.getString("tipo_usu");
                 
                 dispose();
                 new MenuPrincipal(tipoUsu).setVisible(true);
