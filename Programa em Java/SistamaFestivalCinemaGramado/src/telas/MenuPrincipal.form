@@ -151,6 +151,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listar Eventos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmListarEventosActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
             </MenuItem>
@@ -158,16 +161,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alterar Eventos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmAlterarEventosActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itmBuscarEventos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar Eventos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmBuscarEventosActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itmExcluirEventos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Excluir Eventos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmExcluirEventosActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

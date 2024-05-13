@@ -4,6 +4,10 @@
  */
 package telas;
 
+import dao.FestivalCinemaGramadoDao;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ruan.lviana
@@ -15,6 +19,21 @@ public class AlterarEventosParalelos extends javax.swing.JFrame {
      */
     public AlterarEventosParalelos() {
         initComponents();
+    }
+
+    public AlterarEventosParalelos(String id_evt_paral, String nome_evt_paral, String responsavel_evt_paral, String info_evt_paral,
+            String local_evt_paral, String data_evt_paral, String hora_evt_paral) {
+        initComponents();
+
+        txtId.setText(id_evt_paral);
+        txtId.setEnabled(false);
+        txtEvento.setText(nome_evt_paral);
+        txtResponsavel.setText(responsavel_evt_paral);
+        txtInformacoes.setText(info_evt_paral);
+        txtLocal.setText(local_evt_paral);
+        txtData.setText(data_evt_paral);
+        txtHora.setText(hora_evt_paral);
+
     }
 
     /**
@@ -40,6 +59,8 @@ public class AlterarEventosParalelos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtInformacoes = new javax.swing.JTextArea();
         btnSalvar = new javax.swing.JButton();
+        lblId = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alteração de eventos paralelos");
@@ -47,44 +68,44 @@ public class AlterarEventosParalelos extends javax.swing.JFrame {
 
         lblEvento.setText("Evento:");
         getContentPane().add(lblEvento);
-        lblEvento.setBounds(40, 60, 50, 40);
+        lblEvento.setBounds(40, 90, 50, 40);
         getContentPane().add(txtEvento);
-        txtEvento.setBounds(120, 60, 420, 40);
+        txtEvento.setBounds(120, 90, 420, 40);
 
         lblResponsavel.setText("Responsável:");
         getContentPane().add(lblResponsavel);
-        lblResponsavel.setBounds(40, 130, 70, 40);
+        lblResponsavel.setBounds(40, 160, 70, 40);
         getContentPane().add(txtResponsavel);
-        txtResponsavel.setBounds(120, 130, 420, 40);
+        txtResponsavel.setBounds(120, 160, 420, 40);
 
         lblData.setText("Data:");
         getContentPane().add(lblData);
-        lblData.setBounds(40, 200, 50, 40);
+        lblData.setBounds(40, 230, 50, 40);
         getContentPane().add(txtData);
-        txtData.setBounds(120, 200, 170, 40);
+        txtData.setBounds(120, 230, 170, 40);
 
         lblHora.setText("Hora:");
         getContentPane().add(lblHora);
-        lblHora.setBounds(320, 200, 70, 40);
+        lblHora.setBounds(320, 230, 70, 40);
         getContentPane().add(txtHora);
-        txtHora.setBounds(360, 200, 180, 40);
+        txtHora.setBounds(360, 230, 180, 40);
 
         lblInformacoes.setText("Informações:");
         getContentPane().add(lblInformacoes);
-        lblInformacoes.setBounds(40, 370, 70, 40);
+        lblInformacoes.setBounds(40, 400, 70, 40);
         getContentPane().add(txtLocal);
-        txtLocal.setBounds(120, 260, 420, 40);
+        txtLocal.setBounds(120, 290, 420, 40);
 
         lblLocal.setText("Local:");
         getContentPane().add(lblLocal);
-        lblLocal.setBounds(40, 260, 50, 40);
+        lblLocal.setBounds(40, 290, 50, 40);
 
         txtInformacoes.setColumns(20);
         txtInformacoes.setRows(5);
         jScrollPane1.setViewportView(txtInformacoes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(120, 330, 420, 120);
+        jScrollPane1.setBounds(120, 360, 420, 120);
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -93,14 +114,44 @@ public class AlterarEventosParalelos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(230, 500, 190, 50);
+        btnSalvar.setBounds(230, 530, 190, 50);
+
+        lblId.setText("ID:");
+        getContentPane().add(lblId);
+        lblId.setBounds(40, 30, 50, 40);
+        getContentPane().add(txtId);
+        txtId.setBounds(120, 30, 420, 40);
 
         setSize(new java.awt.Dimension(630, 629));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        String id_evt_paral, nome_evt_paral, responsavel_evt_paral, info_evt_paral, local_evt_paral, data_evt_paral, hora_evt_paral;
+        
+        // Pegando as informações dos campos;
+        id_evt_paral = txtId.getText();
+        nome_evt_paral = txtEvento.getText();
+        responsavel_evt_paral = txtResponsavel.getText();
+        info_evt_paral = txtInformacoes.getText();
+        local_evt_paral = txtLocal.getText();
+        data_evt_paral = txtData.getText();
+        hora_evt_paral = txtHora.getText();
+
+        try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
+            new FestivalCinemaGramadoDao().alterarEventosParalelos(id_evt_paral, nome_evt_paral, responsavel_evt_paral, info_evt_paral, local_evt_paral, data_evt_paral, hora_evt_paral);
+
+            // Mensagem para dizer que o evento foi cadastro;
+            JOptionPane.showMessageDialog(null, "Evento alterado com sucesso", "Alteração de Evento Paralelo", JOptionPane.INFORMATION_MESSAGE);
+
+            // Limpar a tela e reposicionar o cursor do mouse;
+            dispose();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+
+        } 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
@@ -144,12 +195,14 @@ public class AlterarEventosParalelos extends javax.swing.JFrame {
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblEvento;
     private javax.swing.JLabel lblHora;
+    private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblInformacoes;
     private javax.swing.JLabel lblLocal;
     private javax.swing.JLabel lblResponsavel;
     private javax.swing.JTextField txtData;
     private javax.swing.JTextField txtEvento;
     private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextArea txtInformacoes;
     private javax.swing.JTextField txtLocal;
     private javax.swing.JTextField txtResponsavel;

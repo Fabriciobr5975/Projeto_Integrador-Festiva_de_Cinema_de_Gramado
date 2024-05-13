@@ -217,16 +217,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnuEventosParalelos.add(itmCadastrarEventos);
 
         itmListarEventos.setText("Listar Eventos");
+        itmListarEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmListarEventosActionPerformed(evt);
+            }
+        });
         mnuEventosParalelos.add(itmListarEventos);
         mnuEventosParalelos.add(jSeparator2);
 
         itmAlterarEventos.setText("Alterar Eventos");
+        itmAlterarEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmAlterarEventosActionPerformed(evt);
+            }
+        });
         mnuEventosParalelos.add(itmAlterarEventos);
 
         itmBuscarEventos.setText("Buscar Eventos");
+        itmBuscarEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmBuscarEventosActionPerformed(evt);
+            }
+        });
         mnuEventosParalelos.add(itmBuscarEventos);
 
         itmExcluirEventos.setText("Excluir Eventos");
+        itmExcluirEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmExcluirEventosActionPerformed(evt);
+            }
+        });
         mnuEventosParalelos.add(itmExcluirEventos);
 
         jMenuBar1.add(mnuEventosParalelos);
@@ -246,7 +266,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itmCadastrarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmCadastrarEventosActionPerformed
-        // TODO add your handling code here:
+        new CadastrarEventosParalelos().setVisible(true);
     }//GEN-LAST:event_itmCadastrarEventosActionPerformed
 
     private void itmBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmBuscarUsuarioActionPerformed
@@ -453,6 +473,105 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void mnuMaisInformacoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuMaisInformacoesMouseClicked
         new MaisInformacoes().setVisible(true);
     }//GEN-LAST:event_mnuMaisInformacoesMouseClicked
+
+    private void itmListarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmListarEventosActionPerformed
+        new ListarEventosParalelos().setVisible(true);
+    }//GEN-LAST:event_itmListarEventosActionPerformed
+
+    private void itmAlterarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAlterarEventosActionPerformed
+        // Váriáveis;
+        String id_evt_paral;
+
+        // Pegando o código do evento para alterar;
+        id_evt_paral = JOptionPane.showInputDialog(null, "Digite o código do evento para a alteração", "Alterar Evento Paralelo", JOptionPane.INFORMATION_MESSAGE);
+
+        try {
+            ResultSet evento = new FestivalCinemaGramadoDao().buscarEventosParalelos(id_evt_paral);
+
+            // Buscando as informações do evento;
+            if (evento.next()) {
+                // Variáveis que pegaram os valores dos campos;
+                String id, nome, responsavel, info, local_evt, data_evt, hora_evt;
+
+                // Associando as variáveis aos dados armazenados nas colunas da tabela;
+                id = evento.getString("id_evt_paral");
+                nome = evento.getString("nome_evt_paral");
+                responsavel = evento.getString("responsavel_evt_paral");
+                info = evento.getString("info_evt_paral");
+                local_evt = evento.getString("local_evt_paral");
+                data_evt = evento.getString("data_evt_paral");
+                hora_evt = evento.getString("hora_evt_paral");
+
+                // Instanciando a classe "AlterarEventosParalelos" para passar os dados das variáveis;
+                new AlterarEventosParalelos(id, nome, responsavel, info, local_evt, data_evt, hora_evt).setVisible(true);
+
+                // Caso não encontre as informações do Evento;
+            } else {
+                JOptionPane.showMessageDialog(null, "Evento não encontrado", "Buscar Evento", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_itmAlterarEventosActionPerformed
+
+    private void itmBuscarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmBuscarEventosActionPerformed
+        String id_evt_paral;
+
+        id_evt_paral = JOptionPane.showInputDialog(null, "Digite o código do evento para a busca", "Buscar evento paralelo", JOptionPane.INFORMATION_MESSAGE);
+
+        try {
+            ResultSet evento = new FestivalCinemaGramadoDao().buscarEventosParalelos(id_evt_paral);
+
+            if (evento.next()) {
+                String id, nome, responsavel, info, local_evt, data_evt, hora_evt;
+
+                id = evento.getString("id_evt_paral");
+                nome = evento.getString("nome_evt_paral");
+                responsavel = evento.getString("responsavel_evt_paral");
+                info = evento.getString("info_evt_paral");
+                local_evt = evento.getString("local_evt_paral");
+                data_evt = evento.getString("data_evt_paral");
+                hora_evt = evento.getString("hora_evt_paral");
+
+                JOptionPane.showMessageDialog(null, "ID: " + id
+                        + "\n" + "Nome do evento: " + nome
+                        + "\n" + "Responsável: " + responsavel
+                        + "\n" + "Informações: " + info
+                        + "\n" + "Local: " + local_evt
+                        + "\n" + "Data: " + data_evt
+                        + "\n" + "Hora: " + hora_evt,  
+                        "Busca Evento Paralelo", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Evento não encontrado", "Buscar evento paralelo", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_itmBuscarEventosActionPerformed
+
+    private void itmExcluirEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExcluirEventosActionPerformed
+        String id_evt_paral;
+
+        id_evt_paral = JOptionPane.showInputDialog(null, "Digite o código do evento para a exclusão", "Excluir Evento", JOptionPane.INFORMATION_MESSAGE);
+
+        try {
+            int retorno = new FestivalCinemaGramadoDao().excluirEventosParalelos(id_evt_paral);
+
+            if (retorno == 1) {
+                JOptionPane.showMessageDialog(null, "Evento excluído com sucesso", "Excluir Evento", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Evento não encontrado", "Excluir Evento", JOptionPane.WARNING_MESSAGE);
+
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_itmExcluirEventosActionPerformed
 
     /**
      * @param args the command line arguments

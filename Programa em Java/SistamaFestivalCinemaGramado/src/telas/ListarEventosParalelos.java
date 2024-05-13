@@ -4,6 +4,12 @@
  */
 package telas;
 
+import dao.FestivalCinemaGramadoDao;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ruan.lviana
@@ -15,6 +21,32 @@ public class ListarEventosParalelos extends javax.swing.JFrame {
      */
     public ListarEventosParalelos() {
         initComponents();
+        listarEventosParalelos();
+    }
+    
+    public void listarEventosParalelos() {
+        try {
+
+            ResultSet eventos = new FestivalCinemaGramadoDao().listarEventosParalelos();
+
+            DefaultTableModel tblModelo = (DefaultTableModel) tblEventos.getModel();
+            tblModelo.setRowCount(0);
+
+            while (eventos.next()) {
+                String[] linha = {
+                    eventos.getString("nome_evt_paral"),
+                    eventos.getString("responsavel_evt_paral"),
+                    eventos.getString("data_evt_paral"),
+                    eventos.getString("hora_evt_paral"),
+                    eventos.getString("local_evt_paral"),
+                    eventos.getString("info_evt_paral")};
+
+                tblModelo.addRow(linha);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
     }
 
     /**
@@ -71,12 +103,46 @@ public class ListarEventosParalelos extends javax.swing.JFrame {
         txtEvento.setBounds(170, 50, 420, 40);
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnBuscar);
         btnBuscar.setBounds(760, 50, 140, 40);
 
         setSize(new java.awt.Dimension(1131, 733));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String nomeEvento;
+        
+        nomeEvento = txtEvento.getText();
+        
+        try {
+
+            ResultSet eventos = new FestivalCinemaGramadoDao().listarEventosParalelosPorNome(nomeEvento);
+
+            DefaultTableModel tblModelo = (DefaultTableModel) tblEventos.getModel();
+            tblModelo.setRowCount(0);
+
+            while (eventos.next()) {
+                String[] linha = {
+                    eventos.getString("nome_evt_paral"),
+                    eventos.getString("responsavel_evt_paral"),
+                    eventos.getString("data_evt_paral"),
+                    eventos.getString("hora_evt_paral"),
+                    eventos.getString("local_evt_paral"),
+                    eventos.getString("info_evt_paral")};
+
+                tblModelo.addRow(linha);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments

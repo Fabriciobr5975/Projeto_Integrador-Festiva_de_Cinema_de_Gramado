@@ -213,4 +213,78 @@ public class FestivalCinemaGramadoDao {
        return programacao;
         
     }
+    
+    public void cadastrarEventosParalelos (String id_evt_paral, String nome_evt_paral, String responsavel_evt_paral, String info_evt_paral, String local_evt_paral, String data_evt_paral, String hora_evt_paral) throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("INSERT INTO evento_paralelo VALUES (?, ?, ?, ?, ?, ?, ?)");
+        st.setString(1, id_evt_paral);
+        st.setString(2, nome_evt_paral);
+        st.setString(3, responsavel_evt_paral);
+        st.setString(4, info_evt_paral);
+        st.setString(5, local_evt_paral);
+        st.setString(6, data_evt_paral);
+        st.setString(7, hora_evt_paral);
+        st.executeUpdate();
+
+    }
+    
+    public void alterarEventosParalelos (String id_evt_paral, String nome_evt_paral, String responsavel_evt_paral, String info_evt_paral, 
+            String local_evt_paral, String data_evt_paral, String hora_evt_paral) throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("UPDATE evento_paralelo SET "
+                + "nome_evt_paral = ?, responsavel_evt_paral = ?, info_evt_paral = ?,  local_evt_paral = ?,  "
+                + "data_evt_paral = ?, hora_evt_paral = ? WHERE id_evt_paral = ?");
+        st.setString(1, nome_evt_paral);
+        st.setString(2, responsavel_evt_paral);
+        st.setString(3, info_evt_paral);
+        st.setString(4, local_evt_paral);
+        st.setString(5, data_evt_paral);
+        st.setString(6, hora_evt_paral);
+        st.setString(7, id_evt_paral);
+        st.executeUpdate();
+
+    }
+    
+     public ResultSet buscarEventosParalelos(String id_evt_paral) throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM evento_paralelo WHERE id_evt_paral = ?");
+        st.setString(1, id_evt_paral);
+        ResultSet evento = st.executeQuery();
+
+        return evento;
+
+    }
+     
+     public int excluirEventosParalelos(String id_evt_paral) throws ClassNotFoundException, SQLException{
+        conectar();
+        
+        PreparedStatement st = conectar.prepareStatement("DELETE FROM evento_paralelo WHERE id_evt_paral = ?");
+        st.setString(1, id_evt_paral);
+        int resultado = st.executeUpdate();
+        
+        return resultado;
+        
+    }
+     
+     public ResultSet listarEventosParalelos() throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM evento_paralelo");
+        ResultSet evento = st.executeQuery();
+
+        return evento;
+    }
+
+    public ResultSet listarEventosParalelosPorNome (String nomeEvento) throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM evento_paralelo WHERE nome_evt_paral LIKE ?");
+        st.setString(1, "%" + nomeEvento + "%");
+        ResultSet evento = st.executeQuery();
+
+        return evento;
+    }
 }
