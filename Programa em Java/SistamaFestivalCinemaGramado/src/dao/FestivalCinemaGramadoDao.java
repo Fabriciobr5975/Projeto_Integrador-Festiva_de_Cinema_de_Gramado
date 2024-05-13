@@ -26,6 +26,19 @@ public class FestivalCinemaGramadoDao {
         conectar = DriverManager.getConnection(url, "rootfabricio", "@Festival7458");
     }
 
+    /**
+     * Método para cadastrar os usuários que forem usar o aplicativo
+     * 
+     * @param nome - Recebe o Nome de um campo txt dentro da tela de cadastro de usuário;
+     * @param sobrenome - Recebe o Sobrenome de um campo txt dentro da tela de cadastro de usuário;
+     * @param email - Recebe o E-Mail de um campo txt dentro da tela de cadastro de usuário;
+     * @param senha - Recebe a Senha de um campo txt dentro da tela de cadastro de usuário;
+     * @param cpf - Recebe o CPF de um campo txt dentro da tela de cadastro de usuário;
+     * @param tipo - Recebe o Tipo de usuário do sistema de um campo txt dentro da tela de cadastro de usuário
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
+    
     public void cadastrarUsuarios(String nome, String sobrenome, String email, String senha, String cpf, String tipo) throws ClassNotFoundException, SQLException {
         conectar();
 
@@ -166,4 +179,38 @@ public class FestivalCinemaGramadoDao {
 
     }
 
+    public int excluirSubmissaoFilmes(String cod) throws ClassNotFoundException, SQLException{
+        conectar();
+        
+        PreparedStatement st = conectar.prepareStatement("DELETE FROM submissao_filme WHERE id_sub_film = ?");
+        st.setString(1, cod);
+        int resultado = st.executeUpdate();
+        
+        return resultado;
+        
+    }
+
+    public void cadastrarProgramacao(String idFilme, String idProgramacao, String local, String data, String hora, String info) throws ClassNotFoundException, SQLException{
+        conectar();
+        
+        PreparedStatement st = conectar.prepareStatement("INSERT INTO programacao_filme VALUES(?,?,?,?,?,?)");
+        st.setString(1, idFilme);
+        st.setString(2, idProgramacao);
+        st.setString(3, local);
+        st.setString(4, data);
+        st.setString(5, hora);
+        st.setString(6, info);
+        st.executeUpdate();
+        
+    }
+
+    public ResultSet ListarProgramacao() throws ClassNotFoundException, SQLException{
+        conectar();
+        
+       PreparedStatement st = conectar.prepareStatement("SELECT * FROM listagem_filmes");
+       ResultSet programacao = st.executeQuery();
+       
+       return programacao;
+        
+    }
 }

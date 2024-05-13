@@ -50,10 +50,21 @@
             <Property name="text" type="java.lang.String" value="Programa&#xe7;&#xe3;o dos Filmes"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="itmCadastrarProgramacaomnu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadastrar Programa&#xe7;&#xe3;o"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmCadastrarProgramacaomnuActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itmVerFilmes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Filmes"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmVerFilmesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator4">
             </MenuItem>
@@ -117,6 +128,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Excluir Filme"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmExcluirFilmeActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -161,6 +175,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Mais Informa&#xe7;&#xf5;es"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mnuMaisInformacoesMouseClicked"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>

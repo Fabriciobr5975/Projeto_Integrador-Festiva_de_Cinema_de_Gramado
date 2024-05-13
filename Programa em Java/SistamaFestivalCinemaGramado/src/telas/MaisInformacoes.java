@@ -15,6 +15,11 @@ public class MaisInformacoes extends javax.swing.JFrame {
      */
     public MaisInformacoes() {
         initComponents();
+        conf();
+    }
+    
+    public void conf(){
+        txtInformacoes.setEnabled(false);
     }
 
     /**
@@ -26,11 +31,23 @@ public class MaisInformacoes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtInformacoes = new javax.swing.JTextArea();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Informações adicionais");
         getContentPane().setLayout(null);
 
-        setSize(new java.awt.Dimension(416, 308));
+        txtInformacoes.setColumns(20);
+        txtInformacoes.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        txtInformacoes.setRows(5);
+        txtInformacoes.setText("Sobre Nós\n\n    O festival de cinema de gramado foi fundado em 10 de janeiro de 1973 e está indo para a sua 52ª edição no ano de 2024. \nÉ um dos eventos mais importantes no país em relação ao cinema nacional, promovendo diversos artistas, diretores, filmes \ne curtas durante toda a sua existência.\n    Existe uma relação de paralelidade entre cada edição do festival com o rastro histórico do crescimento e evolução do país \njunto ao cinema. O festival foi idealizado pelo Instituto Nacional de Cinema, que surgiu da união da Prefeitura Municipal de \nGramado com a Companhia Jornalística Caldas Júnior, a Embrafilme, a Fundação Nacional de Arte e as secretarias de Turismo \ne Educação e Cultura do Estado.\n    Hoje o festival além de ser uma referência no Brasil é considerado de peso no âmbito internacional, contando com o \nenvolvimento de diversas pessoas na sua estruturação e execução. O festival traz junto com ele um aquecimento na economia \natravés do turismo e a criação de empregos envolvendo todos os processos para a realização do festival que cresce mais e mais\n a cada ano.\n\nPor que deste site?\n\n    Devido ao aumento do público que frequenta o festival de cinema de Gramado, foi solicitada a elaboração de um sistema que \nterá como objetivo a simplificação e a otimização do processo de submissão e seleção de filmes, facilitando a compra de ingressos \ne a reserva de lugar para os espectadores, permitindo uma gestão eficiente da programação e dos eventos paralelos. O festival de \ncinema de Gramado encontra - se em sua quinquagésima primeira edição, ocorrendo tradicionalmente no mês de agosto. Sendo \nassim, queremos garantir o maior sucesso e excelência do festival como um dos principais eventos cinematográficos do país.\n\n    Pensamos em um sistema que seja simples e intuitivo, para que todos consigam utilizar o sistema de forma clara, facilitando a\ncompra de ingressos, deixando a escolha dos filmes mais dinâmicas, ajudando os mesmo a se localizarem no espaço entre outros\ninúmeros benefícios. A nossa ideia é que os clientes usem a ferramenta para que exista uma gestão eficiente de esforços, trazendo \numa experiência otimizada e ágil para que todos aproveitem ao máximo o festival.\n\n---------------------------------------------------------------------------------------------------------------------------------------------------\n\t                 Entre em contato conosco: Email de Contato Telefone: +55 (54) 97458-0206\n\t\tEndereço: Av. Borges de Medeiros 2659, Gramado, RS, 95670-000\n\t                     © 2024 Festival de Cinema de Gramado. Todos os direitos reservados.");
+        jScrollPane1.setViewportView(txtInformacoes);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(0, 0, 850, 710);
+
+        setSize(new java.awt.Dimension(849, 719));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -61,6 +78,7 @@ public class MaisInformacoes extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -70,5 +88,7 @@ public class MaisInformacoes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtInformacoes;
     // End of variables declaration//GEN-END:variables
 }

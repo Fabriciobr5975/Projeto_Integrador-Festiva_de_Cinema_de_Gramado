@@ -4,6 +4,12 @@
  */
 package telas;
 
+import dao.FestivalCinemaGramadoDao;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ruan.lviana
@@ -15,6 +21,35 @@ public class ListarProgramacaoFilmes extends javax.swing.JFrame {
      */
     public ListarProgramacaoFilmes() {
         initComponents();
+        verProgramacaoFilmes();
+    }
+    
+     public void verProgramacaoFilmes() {
+        try {
+
+            ResultSet programacao = new FestivalCinemaGramadoDao().ListarProgramacao();
+
+            DefaultTableModel tblModelo = (DefaultTableModel) tblProgramacao.getModel();
+            tblModelo.setRowCount(0);
+
+            while (programacao.next()) {
+                String[] linha = {
+                    programacao.getString("nome_sub_film"),
+                    programacao.getString("local_prog_film "),
+                    programacao.getString("data_prog_film"),
+                    programacao.getString("hora_prog_film"),
+                    programacao.getString("categoria_sub_film"),
+                    programacao.getString("faixa_etaria_sub_film"),
+                    programacao.getString("CONCAT(info_sub_film,' ', sobrenome_diretor_sub_film)"),
+                    programacao.getString("info_prog_film")
+                };
+
+                tblModelo.addRow(linha);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
     }
 
     /**
@@ -30,7 +65,7 @@ public class ListarProgramacaoFilmes extends javax.swing.JFrame {
         txtFilme = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProgramacao = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Listar a programação dos filmes");
@@ -53,7 +88,7 @@ public class ListarProgramacaoFilmes extends javax.swing.JFrame {
         getContentPane().add(btnBuscar);
         btnBuscar.setBounds(720, 40, 210, 40);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProgramacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -72,7 +107,7 @@ public class ListarProgramacaoFilmes extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblProgramacao);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(10, 120, 1130, 560);
@@ -123,8 +158,8 @@ public class ListarProgramacaoFilmes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblFilme;
+    private javax.swing.JTable tblProgramacao;
     private javax.swing.JTextField txtFilme;
     // End of variables declaration//GEN-END:variables
 }

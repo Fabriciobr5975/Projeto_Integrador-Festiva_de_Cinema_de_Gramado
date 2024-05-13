@@ -71,7 +71,7 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
         lblFilme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblFilme.setText("Filme:");
         getContentPane().add(lblFilme);
-        lblFilme.setBounds(40, 60, 50, 40);
+        lblFilme.setBounds(40, 80, 50, 40);
 
         txtFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,12 +79,12 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFilme);
-        txtFilme.setBounds(90, 60, 550, 40);
+        txtFilme.setBounds(110, 80, 550, 40);
 
         lblDuracao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDuracao.setText("Duração:");
         getContentPane().add(lblDuracao);
-        lblDuracao.setBounds(40, 130, 54, 40);
+        lblDuracao.setBounds(40, 150, 70, 40);
 
         txtDuracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,12 +92,12 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtDuracao);
-        txtDuracao.setBounds(100, 130, 120, 40);
+        txtDuracao.setBounds(110, 150, 110, 40);
 
         lblClassificacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblClassificacao.setText("Classificação:");
         getContentPane().add(lblClassificacao);
-        lblClassificacao.setBounds(230, 130, 80, 40);
+        lblClassificacao.setBounds(240, 150, 90, 40);
 
         txtClassificacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,12 +105,12 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtClassificacao);
-        txtClassificacao.setBounds(320, 130, 110, 40);
+        txtClassificacao.setBounds(330, 150, 110, 40);
 
         lblGenero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblGenero.setText("Gênero:");
         getContentPane().add(lblGenero);
-        lblGenero.setBounds(440, 130, 60, 40);
+        lblGenero.setBounds(450, 150, 60, 40);
 
         txtGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,12 +118,12 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtGenero);
-        txtGenero.setBounds(500, 130, 140, 40);
+        txtGenero.setBounds(510, 150, 150, 40);
 
         lblSobrenomeDiretor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblSobrenomeDiretor.setText("Sobrenome Diretor:");
         getContentPane().add(lblSobrenomeDiretor);
-        lblSobrenomeDiretor.setBounds(310, 200, 120, 40);
+        lblSobrenomeDiretor.setBounds(320, 220, 130, 40);
 
         txtNomeDiretor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +131,7 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeDiretor);
-        txtNomeDiretor.setBounds(130, 200, 170, 40);
+        txtNomeDiretor.setBounds(140, 220, 170, 40);
 
         txtSobrenomeDiretor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,24 +139,24 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSobrenomeDiretor);
-        txtSobrenomeDiretor.setBounds(440, 200, 200, 40);
+        txtSobrenomeDiretor.setBounds(460, 220, 200, 40);
 
         lblInformacoes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblInformacoes.setText("Informações:");
         getContentPane().add(lblInformacoes);
-        lblInformacoes.setBounds(40, 300, 90, 40);
+        lblInformacoes.setBounds(40, 320, 90, 40);
 
         lblNomeDiretor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblNomeDiretor.setText("Nome Diretor:");
         getContentPane().add(lblNomeDiretor);
-        lblNomeDiretor.setBounds(40, 200, 90, 40);
+        lblNomeDiretor.setBounds(40, 220, 90, 40);
 
         txtInformacoes.setColumns(20);
         txtInformacoes.setRows(5);
         jScrollPane1.setViewportView(txtInformacoes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(130, 270, 510, 120);
+        jScrollPane1.setBounds(140, 290, 520, 120);
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -165,14 +165,14 @@ public class AlterarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(250, 430, 230, 50);
+        btnSalvar.setBounds(250, 450, 230, 50);
 
         lblCod.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblCod.setText("Código:");
         getContentPane().add(lblCod);
         lblCod.setBounds(40, 10, 70, 40);
         getContentPane().add(txtCod);
-        txtCod.setBounds(100, 10, 410, 40);
+        txtCod.setBounds(110, 10, 350, 40);
 
         setSize(new java.awt.Dimension(730, 559));
         setLocationRelativeTo(null);
