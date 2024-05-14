@@ -63,7 +63,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         itmListarUsuario = new javax.swing.JMenuItem();
         itmExcluirUsuario = new javax.swing.JMenuItem();
         mnuProgramacaoFilmes = new javax.swing.JMenu();
-        itmCadastrarProgramacaomnu = new javax.swing.JMenuItem();
+        itmCadastrarProgramacao = new javax.swing.JMenuItem();
         itmVerFilmes = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         itmBuscarProgramacao = new javax.swing.JMenuItem();
@@ -133,13 +133,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         mnuProgramacaoFilmes.setText("Programação dos Filmes");
 
-        itmCadastrarProgramacaomnu.setText("Cadastrar Programação");
-        itmCadastrarProgramacaomnu.addActionListener(new java.awt.event.ActionListener() {
+        itmCadastrarProgramacao.setText("Cadastrar Programação");
+        itmCadastrarProgramacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itmCadastrarProgramacaomnuActionPerformed(evt);
+                itmCadastrarProgramacaoActionPerformed(evt);
             }
         });
-        mnuProgramacaoFilmes.add(itmCadastrarProgramacaomnu);
+        mnuProgramacaoFilmes.add(itmCadastrarProgramacao);
 
         itmVerFilmes.setText("Ver Filmes");
         itmVerFilmes.addActionListener(new java.awt.event.ActionListener() {
@@ -151,12 +151,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnuProgramacaoFilmes.add(jSeparator4);
 
         itmBuscarProgramacao.setText("Buscar");
+        itmBuscarProgramacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmBuscarProgramacaoActionPerformed(evt);
+            }
+        });
         mnuProgramacaoFilmes.add(itmBuscarProgramacao);
 
         itmAlterarProgramacao.setText("Alterar");
+        itmAlterarProgramacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmAlterarProgramacaoActionPerformed(evt);
+            }
+        });
         mnuProgramacaoFilmes.add(itmAlterarProgramacao);
 
         itmExcluirProgramacao.setText("Excluir");
+        itmExcluirProgramacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmExcluirProgramacaoActionPerformed(evt);
+            }
+        });
         mnuProgramacaoFilmes.add(itmExcluirProgramacao);
 
         jMenuBar1.add(mnuProgramacaoFilmes);
@@ -466,9 +481,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         new ListarProgramacaoFilmes().setVisible(true);
     }//GEN-LAST:event_itmVerFilmesActionPerformed
 
-    private void itmCadastrarProgramacaomnuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmCadastrarProgramacaomnuActionPerformed
+    private void itmCadastrarProgramacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmCadastrarProgramacaoActionPerformed
         new CadastrarProgramacaoFilmes().setVisible(true);
-    }//GEN-LAST:event_itmCadastrarProgramacaomnuActionPerformed
+    }//GEN-LAST:event_itmCadastrarProgramacaoActionPerformed
 
     private void mnuMaisInformacoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuMaisInformacoesMouseClicked
         new MaisInformacoes().setVisible(true);
@@ -573,6 +588,92 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_itmExcluirEventosActionPerformed
 
+    private void itmBuscarProgramacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmBuscarProgramacaoActionPerformed
+       String codProgramacao;
+
+        codProgramacao = JOptionPane.showInputDialog(null, "Digite o código da programação para busca-lo", "Buscar Programação", JOptionPane.INFORMATION_MESSAGE);
+
+        try {
+            ResultSet programacao = new FestivalCinemaGramadoDao().buscarProgramacao(codProgramacao);
+
+            if (programacao.next()) {
+                String idFilme, idProgramacao, local, data, hora, info;
+
+                idFilme = programacao.getString("id_sub_film");
+                idProgramacao = programacao.getString("id_prog_film");
+                local = programacao.getString("local_prog_film");
+                data = programacao.getString("data_prog_film");
+                hora = programacao.getString("hora_prog_film");
+                info = programacao.getString("info_prog_film");
+
+                JOptionPane.showMessageDialog(null, "ID do Filme: " + idFilme
+                        + "\n" + "ID da Programação: " + idProgramacao
+                        + "\n" + "Local: " + local
+                        + "\n" + "Data: " + data
+                        + "\n" + "Hora: " + hora
+                        + "\n" + "Informações: " + info,
+                        "Buscar Programação", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Programação não encontrada", "Buscar Programação", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_itmBuscarProgramacaoActionPerformed
+
+    private void itmAlterarProgramacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAlterarProgramacaoActionPerformed
+       String codProgramacao;
+
+        codProgramacao = JOptionPane.showInputDialog(null, "Digite o código da programação para busca-lo", "Buscar Programação", JOptionPane.INFORMATION_MESSAGE);
+
+        try {
+            ResultSet programacao = new FestivalCinemaGramadoDao().buscarProgramacao(codProgramacao);
+
+            if (programacao.next()) {
+                String idFilme, idProgramacao, local, data, hora, info;
+
+                idFilme = programacao.getString("id_sub_film");
+                idProgramacao = programacao.getString("id_prog_film");
+                local = programacao.getString("local_prog_film");
+                data = programacao.getString("data_prog_film");
+                hora = programacao.getString("hora_prog_film");
+                info = programacao.getString("info_prog_film");
+
+                new AlterarProgramacaoFilmes(idFilme, idProgramacao, local, data, hora, info).setVisible(true);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Programação não encontrada", "Buscar Programação", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_itmAlterarProgramacaoActionPerformed
+
+    private void itmExcluirProgramacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExcluirProgramacaoActionPerformed
+        String codProgramacao;
+
+        codProgramacao = JOptionPane.showInputDialog(null, "Digite o código da programação para a sua exclusão", "Excluir Programação", JOptionPane.INFORMATION_MESSAGE);
+
+        try {
+            int retorno = new FestivalCinemaGramadoDao().excluirProgramacao(codProgramacao);
+
+            if (retorno == 1) {
+                JOptionPane.showMessageDialog(null, "Programação excluída com sucesso", "Excluir Programação", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Programação excluída encontrado", "Excluir Programação", JOptionPane.WARNING_MESSAGE);
+
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    
+    }//GEN-LAST:event_itmExcluirProgramacaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -619,7 +720,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itmBuscarUsuario;
     private javax.swing.JMenuItem itmCadastrarEventos;
     private javax.swing.JMenuItem itmCadastrarFilme;
-    private javax.swing.JMenuItem itmCadastrarProgramacaomnu;
+    private javax.swing.JMenuItem itmCadastrarProgramacao;
     private javax.swing.JMenuItem itmExcluirEventos;
     private javax.swing.JMenuItem itmExcluirFilme;
     private javax.swing.JMenuItem itmExcluirProgramacao;

@@ -35,7 +35,7 @@ public class Login extends javax.swing.JFrame {
         lblSenha = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         pswSenha = new javax.swing.JPasswordField();
-        btnEntrar4 = new javax.swing.JButton();
+        btnEntrar = new javax.swing.JButton();
         lblMsgCadastro = new javax.swing.JLabel();
         bntAbrirTelaCadastro = new javax.swing.JButton();
 
@@ -50,19 +50,36 @@ public class Login extends javax.swing.JFrame {
         lblSenha.setText("Senha:");
         getContentPane().add(lblSenha);
         lblSenha.setBounds(20, 100, 50, 30);
+
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmailKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtEmail);
         txtEmail.setBounds(80, 30, 360, 30);
+
+        pswSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pswSenhaKeyPressed(evt);
+            }
+        });
         getContentPane().add(pswSenha);
         pswSenha.setBounds(80, 100, 360, 30);
 
-        btnEntrar4.setText("Entrar");
-        btnEntrar4.addActionListener(new java.awt.event.ActionListener() {
+        btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrar4ActionPerformed(evt);
+                btnEntrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEntrar4);
-        btnEntrar4.setBounds(190, 170, 90, 30);
+        btnEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnEntrarKeyPressed(evt);
+            }
+        });
+        getContentPane().add(btnEntrar);
+        btnEntrar.setBounds(190, 170, 90, 30);
 
         lblMsgCadastro.setText("Não tem cadastro? Faça o seu cadastro agora mesmo!");
         getContentPane().add(lblMsgCadastro);
@@ -81,7 +98,7 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEntrar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrar4ActionPerformed
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         String email, senha;
 
         email = txtEmail.getText();
@@ -104,12 +121,30 @@ public class Login extends javax.swing.JFrame {
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
         } 
-    }//GEN-LAST:event_btnEntrar4ActionPerformed
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void bntAbrirTelaCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAbrirTelaCadastroActionPerformed
         new CadastrarUsuario().setVisible(true);
         dispose();
     }//GEN-LAST:event_bntAbrirTelaCadastroActionPerformed
+
+    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            pswSenha.requestFocus();
+        }
+    }//GEN-LAST:event_txtEmailKeyPressed
+
+    private void pswSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswSenhaKeyPressed
+       if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            btnEntrar.requestFocus();
+        }
+    }//GEN-LAST:event_pswSenhaKeyPressed
+
+    private void btnEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEntrarKeyPressed
+       if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            btnEntrar.doClick();
+        }
+    }//GEN-LAST:event_btnEntrarKeyPressed
 
     /**
      * @param args the command line arguments
@@ -148,7 +183,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntAbrirTelaCadastro;
-    private javax.swing.JButton btnEntrar4;
+    private javax.swing.JButton btnEntrar;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblMsgCadastro;
     private javax.swing.JLabel lblSenha;

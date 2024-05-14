@@ -4,6 +4,10 @@
  */
 package telas;
 
+import java.sql.SQLException;
+import dao.FestivalCinemaGramadoDao;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ruan.lviana
@@ -17,6 +21,18 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
         initComponents();
     }
 
+    public AlterarProgramacaoFilmes(String idFilme, String idProgramacao, String local, String data, String hora, String info) {
+        initComponents();
+        
+        txtFilme.setText(idFilme);
+        txtId.setText(idProgramacao);
+        txtId.setEnabled(false);
+        txtLocal.setText(local);
+        txtData.setText(data);
+        txtHora.setText(hora);
+        txtInformacoes.setText(info);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,6 +126,11 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
         txtLocal.setBounds(100, 170, 410, 40);
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSalvar);
         btnSalvar.setBounds(190, 470, 210, 50);
 
@@ -149,6 +170,36 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        String idFilme, idProgramacao, local, data, hora, info;
+        
+        idFilme = txtFilme.getText();
+        idProgramacao = txtId.getText();
+        local = txtLocal.getText();
+        data = txtData.getText();
+        hora = txtHora.getText();
+        info = txtInformacoes.getText();
+        
+        try{
+           new FestivalCinemaGramadoDao().alterarProgramacao(idFilme, idProgramacao, local, data, hora, info);
+           
+            JOptionPane.showMessageDialog(null, "Programação alterada com sucesso", "Alterar Programação", JOptionPane.INFORMATION_MESSAGE);
+           
+           txtFilme.setText("");
+           txtId.setText("");
+           txtLocal.setText("");
+           txtData.setText("");
+           txtHora.setText("");
+           txtInformacoes.setText("");
+           txtFilme.requestFocus();
+           
+           dispose();
+           
+        } catch(ClassNotFoundException | SQLException ex){
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments

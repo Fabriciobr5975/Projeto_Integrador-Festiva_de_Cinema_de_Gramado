@@ -28,17 +28,22 @@ public class FestivalCinemaGramadoDao {
 
     /**
      * Método para cadastrar os usuários que forem usar o aplicativo
-     * 
-     * @param nome - Recebe o Nome de um campo txt dentro da tela de cadastro de usuário;
-     * @param sobrenome - Recebe o Sobrenome de um campo txt dentro da tela de cadastro de usuário;
-     * @param email - Recebe o E-Mail de um campo txt dentro da tela de cadastro de usuário;
-     * @param senha - Recebe a Senha de um campo txt dentro da tela de cadastro de usuário;
-     * @param cpf - Recebe o CPF de um campo txt dentro da tela de cadastro de usuário;
-     * @param tipo - Recebe o Tipo de usuário do sistema de um campo txt dentro da tela de cadastro de usuário
+     *
+     * @param nome - Recebe o Nome de um campo txt dentro da tela de cadastro de
+     * usuário;
+     * @param sobrenome - Recebe o Sobrenome de um campo txt dentro da tela de
+     * cadastro de usuário;
+     * @param email - Recebe o E-Mail de um campo txt dentro da tela de cadastro
+     * de usuário;
+     * @param senha - Recebe a Senha de um campo txt dentro da tela de cadastro
+     * de usuário;
+     * @param cpf - Recebe o CPF de um campo txt dentro da tela de cadastro de
+     * usuário;
+     * @param tipo - Recebe o Tipo de usuário do sistema de um campo txt dentro
+     * da tela de cadastro de usuário
      * @throws ClassNotFoundException
-     * @throws SQLException 
+     * @throws SQLException
      */
-    
     public void cadastrarUsuarios(String nome, String sobrenome, String email, String senha, String cpf, String tipo) throws ClassNotFoundException, SQLException {
         conectar();
 
@@ -179,42 +184,86 @@ public class FestivalCinemaGramadoDao {
 
     }
 
-    public int excluirSubmissaoFilmes(String cod) throws ClassNotFoundException, SQLException{
+    public int excluirSubmissaoFilmes(String cod) throws ClassNotFoundException, SQLException {
         conectar();
-        
+
         PreparedStatement st = conectar.prepareStatement("DELETE FROM submissao_filme WHERE id_sub_film = ?");
         st.setString(1, cod);
         int resultado = st.executeUpdate();
-        
+
         return resultado;
-        
+
     }
 
-    public void cadastrarProgramacao(String idFilme, String idProgramacao, String local, String data, String hora, String info) throws ClassNotFoundException, SQLException{
+    public void cadastrarProgramacao(String idFilme, String idProgramacao, String local, String data, String hora, String info) throws ClassNotFoundException, SQLException {
         conectar();
-        
+
         PreparedStatement st = conectar.prepareStatement("INSERT INTO programacao_filme VALUES(?,?,?,?,?,?)");
-        st.setString(1, idFilme);
-        st.setString(2, idProgramacao);
-        st.setString(3, local);
+        st.setString(1, idProgramacao);
+        st.setString(2, local);
+        st.setString(3, info);
         st.setString(4, data);
         st.setString(5, hora);
-        st.setString(6, info);
+        st.setString(6, idFilme);
         st.executeUpdate();
-        
+
     }
 
-    public ResultSet ListarProgramacao() throws ClassNotFoundException, SQLException{
+    public ResultSet ListarProgramacao() throws ClassNotFoundException, SQLException {
         conectar();
-        
-       PreparedStatement st = conectar.prepareStatement("SELECT * FROM listagem_filmes");
-       ResultSet programacao = st.executeQuery();
-       
-       return programacao;
-        
+
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM listagem_filmes");
+        ResultSet programacao = st.executeQuery();
+
+        return programacao;
+
     }
-    
-    public void cadastrarEventosParalelos (String id_evt_paral, String nome_evt_paral, String responsavel_evt_paral, String info_evt_paral, String local_evt_paral, String data_evt_paral, String hora_evt_paral) throws ClassNotFoundException, SQLException {
+
+    public ResultSet ListarProgramacaoPorNome(String nome) throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM listagem_filmes WHERE Filme LIKE ?");
+        st.setString(1, "%" + nome + "%");
+        ResultSet programacao = st.executeQuery();
+
+        return programacao;
+    }
+
+    public int excluirProgramacao(String codProgramacao) throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("DELETE FROM programacao_filme WHERE id_prog_film = ?");
+        st.setString(1, codProgramacao);
+        int retorno = st.executeUpdate();
+
+        return retorno;
+    }
+
+    public ResultSet buscarProgramacao(String codProgramacao) throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("SELECT * FROM programacao_filme WHERE id_prog_film = ?");
+        st.setString(1, codProgramacao);
+        ResultSet programacao = st.executeQuery();
+
+        return programacao;
+    }
+
+    public void alterarProgramacao(String idFilme, String idProgramacao, String local, String data, String hora, String info) throws ClassNotFoundException, SQLException {
+        conectar();
+
+        PreparedStatement st = conectar.prepareStatement("UPDATE programacao_filme SET id_sub_film = ?, local_prog_film = ?,"
+                + " data_prog_film = ?, hora_prog_film = ?, info_prog_film = ? WHERE id_prog_film = ?");
+        st.setString(1, idFilme);
+        st.setString(2, local);
+        st.setString(3, data);
+        st.setString(4, hora);
+        st.setString(5, info);
+        st.setString(6, idProgramacao);
+        st.executeUpdate();
+    }
+
+    public void cadastrarEventosParalelos(String id_evt_paral, String nome_evt_paral, String responsavel_evt_paral, String info_evt_paral, String local_evt_paral, String data_evt_paral, String hora_evt_paral) throws ClassNotFoundException, SQLException {
         conectar();
 
         PreparedStatement st = conectar.prepareStatement("INSERT INTO evento_paralelo VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -228,8 +277,8 @@ public class FestivalCinemaGramadoDao {
         st.executeUpdate();
 
     }
-    
-    public void alterarEventosParalelos (String id_evt_paral, String nome_evt_paral, String responsavel_evt_paral, String info_evt_paral, 
+
+    public void alterarEventosParalelos(String id_evt_paral, String nome_evt_paral, String responsavel_evt_paral, String info_evt_paral,
             String local_evt_paral, String data_evt_paral, String hora_evt_paral) throws ClassNotFoundException, SQLException {
         conectar();
 
@@ -246,8 +295,8 @@ public class FestivalCinemaGramadoDao {
         st.executeUpdate();
 
     }
-    
-     public ResultSet buscarEventosParalelos(String id_evt_paral) throws ClassNotFoundException, SQLException {
+
+    public ResultSet buscarEventosParalelos(String id_evt_paral) throws ClassNotFoundException, SQLException {
         conectar();
 
         PreparedStatement st = conectar.prepareStatement("SELECT * FROM evento_paralelo WHERE id_evt_paral = ?");
@@ -257,19 +306,19 @@ public class FestivalCinemaGramadoDao {
         return evento;
 
     }
-     
-     public int excluirEventosParalelos(String id_evt_paral) throws ClassNotFoundException, SQLException{
+
+    public int excluirEventosParalelos(String id_evt_paral) throws ClassNotFoundException, SQLException {
         conectar();
-        
+
         PreparedStatement st = conectar.prepareStatement("DELETE FROM evento_paralelo WHERE id_evt_paral = ?");
         st.setString(1, id_evt_paral);
         int resultado = st.executeUpdate();
-        
+
         return resultado;
-        
+
     }
-     
-     public ResultSet listarEventosParalelos() throws ClassNotFoundException, SQLException {
+
+    public ResultSet listarEventosParalelos() throws ClassNotFoundException, SQLException {
         conectar();
 
         PreparedStatement st = conectar.prepareStatement("SELECT * FROM evento_paralelo");
@@ -278,7 +327,7 @@ public class FestivalCinemaGramadoDao {
         return evento;
     }
 
-    public ResultSet listarEventosParalelosPorNome (String nomeEvento) throws ClassNotFoundException, SQLException {
+    public ResultSet listarEventosParalelosPorNome(String nomeEvento) throws ClassNotFoundException, SQLException {
         conectar();
 
         PreparedStatement st = conectar.prepareStatement("SELECT * FROM evento_paralelo WHERE nome_evt_paral LIKE ?");
