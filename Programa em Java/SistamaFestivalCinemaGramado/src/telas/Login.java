@@ -99,49 +99,55 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        // Variáveis;
         String email, senha;
 
+        // Pegando os dados dos campos e atribuindo a uma variável;
         email = txtEmail.getText();
         senha = pswSenha.getText();
 
         try {
+            // Instanciamento do Objeto Usuario que recebe o método "loginUsuario";
             ResultSet usuario = new FestivalCinemaGramadoDao().loginUsuario(email, senha);
-            if (usuario.next()) {
+
+            if (usuario.next()) { //Se o usuário for encontrado;
                 String tipoUsu;
 
+                // Pegando o tipo de usuário;
                 tipoUsu = usuario.getString("tipo_usu");
-                
-                dispose();
+
+                dispose(); //Fechando a tela atual;
+                //Abrindo o menu com de acordo com o tipo do usuário;
                 new MenuPrincipal(tipoUsu).setVisible(true);
-            
-            } else {
+
+            } else { //Se não for encontrado;
                 JOptionPane.showMessageDialog(null, "Usuário não identificado");
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
-        } 
+        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void bntAbrirTelaCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAbrirTelaCadastroActionPerformed
-        new CadastrarUsuario().setVisible(true);
-        dispose();
+        new CadastrarUsuario().setVisible(true); // Abrir a tela de cadastro de usuários caso o usuário não tenha um login
+        dispose(); // Fechar a tela atual após a tela de cadastrar usuário ser carregada e aberta
     }//GEN-LAST:event_bntAbrirTelaCadastroActionPerformed
 
     private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
             pswSenha.requestFocus();
         }
     }//GEN-LAST:event_txtEmailKeyPressed
 
     private void pswSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswSenhaKeyPressed
-       if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
             btnEntrar.requestFocus();
         }
     }//GEN-LAST:event_pswSenhaKeyPressed
 
     private void btnEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEntrarKeyPressed
-       if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
             btnEntrar.doClick();
         }
     }//GEN-LAST:event_btnEntrarKeyPressed

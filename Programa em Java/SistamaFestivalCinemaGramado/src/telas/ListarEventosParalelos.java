@@ -98,9 +98,9 @@ public class ListarEventosParalelos extends javax.swing.JFrame {
 
         lblEvento.setText("Evento:");
         getContentPane().add(lblEvento);
-        lblEvento.setBounds(90, 50, 50, 40);
+        lblEvento.setBounds(20, 50, 50, 40);
         getContentPane().add(txtEvento);
-        txtEvento.setBounds(170, 50, 420, 40);
+        txtEvento.setBounds(100, 50, 800, 40);
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +109,7 @@ public class ListarEventosParalelos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBuscar);
-        btnBuscar.setBounds(760, 50, 140, 40);
+        btnBuscar.setBounds(950, 50, 140, 40);
 
         setSize(new java.awt.Dimension(1131, 733));
         setLocationRelativeTo(null);

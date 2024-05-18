@@ -5,7 +5,6 @@
 package telas;
 
 import dao.FestivalCinemaGramadoDao;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
@@ -26,21 +25,39 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal(String tipoUsu) {
         initComponents();
 
+        // Delimitando o que cada usuário pode ver e fazer no menu;
         if (tipoUsu.equalsIgnoreCase("Visitante")) {
             itmBuscarUsuario.setVisible(false);
             itmListarUsuario.setVisible(false);
             itmExcluirUsuario.setVisible(false);
             mnuSubmissaoFilmes.setVisible(false);
+            itmCadastrarProgramacao.setVisible(false);
+            itmBuscarProgramacao.setVisible(false);
+            itmAlterarProgramacao.setVisible(false);
+            itmExcluirProgramacao.setVisible(false);
+            mnuSubmissaoFilmes.setVisible(false);
+            itmCadastrarEventos.setVisible(false);
+            itmAlterarEventos.setVisible(false);
+            itmBuscarEventos.setVisible(false);
+            itmExcluirEventos.setVisible(false);
 
         } else if (tipoUsu.equalsIgnoreCase("Cineasta")) {
-            //itmBuscarUsuario.setVisible(false);
-            //itmListarUsuario.setVisible(false);
-            //itmExcluirUsuario.setVisible(false);
+            itmBuscarUsuario.setVisible(false);
+            itmListarUsuario.setVisible(false);
+            itmExcluirUsuario.setVisible(false);
+            itmCadastrarProgramacao.setVisible(false);
+            itmBuscarProgramacao.setVisible(false);
+            itmAlterarProgramacao.setVisible(false);
+            itmExcluirProgramacao.setVisible(false);
+            itmBuscarEventos.setVisible(false);
 
         } else if (tipoUsu.equalsIgnoreCase("Avaliador")) {
             itmBuscarUsuario.setVisible(false);
             itmListarUsuario.setVisible(false);
             itmExcluirUsuario.setVisible(false);
+            mnuProgramacaoFilmes.setVisible(false);
+            mnuSubmissaoFilmes.setVisible(false);
+            mnuEventosParalelos.setVisible(false);
 
         }
     }
@@ -54,7 +71,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblImagemPrincipal = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuUsuario = new javax.swing.JMenu();
         itmAlterarInfoUsuario = new javax.swing.JMenuItem();
@@ -89,10 +106,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setTitle("Menu");
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/img-festival-cinema-full.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(-10, -30, 820, 560);
+        lblImagemPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/img-festival-cinema-full.jpg"))); // NOI18N
+        lblImagemPrincipal.setText("jLabel1");
+        getContentPane().add(lblImagemPrincipal);
+        lblImagemPrincipal.setBounds(-10, -30, 840, 560);
 
         mnuUsuario.setText("Usuario");
 
@@ -276,25 +293,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(820, 536));
+        setSize(new java.awt.Dimension(829, 536));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void itmCadastrarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmCadastrarEventosActionPerformed
-        new CadastrarEventosParalelos().setVisible(true);
+        new CadastrarEventosParalelos().setVisible(true); // Instancindo a classe e deixando ela visível;
     }//GEN-LAST:event_itmCadastrarEventosActionPerformed
 
     private void itmBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmBuscarUsuarioActionPerformed
+        // Variável para pegar o cpf do usuário;
         String cpfUsu;
 
+        // Pegando o cpf do usuário;
         cpfUsu = JOptionPane.showInputDialog(null, "Digite o CPF do usuário", "Buscar Usuário", JOptionPane.INFORMATION_MESSAGE);
 
         try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet usuario = new FestivalCinemaGramadoDao().buscarUsuario(cpfUsu);
 
-            if (usuario.next()) {
+            if (usuario.next()) { // Se o usuário for encontrado;
+                // Variáveis para pegar os dados do usuário;
                 String nome, sobrenome, cpf, email, senha, tipoUsu;
 
+                // Atribuindo as variáveis aos campos que contém os dados;
                 nome = usuario.getString("nome_usu");
                 sobrenome = usuario.getString("sobrenome_usu");
                 cpf = usuario.getString("cpf_usu");
@@ -302,13 +324,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 senha = usuario.getString("senha_usu");
                 tipoUsu = usuario.getString("tipo_usu");
 
+                // Mensagem trazendo todos os dados do usuário; 
                 JOptionPane.showMessageDialog(null, "Usuário: " + nome + " " + sobrenome
                         + "\n" + "CPF: " + cpf
                         + "\n" + "E-Mail: " + email
                         + "\n" + "Senha: " + senha
                         + "\n" + "Tipo de Usuário: " + tipoUsu);
 
-            } else {
+            } else { // Se o usuário não for encontrado;
                 JOptionPane.showMessageDialog(null, "Usuario não encontrado", "Buscar Usuário", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -319,16 +342,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmBuscarUsuarioActionPerformed
 
     private void itmAlterarInfoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAlterarInfoUsuarioActionPerformed
+        // Variável para pegar o cpf do usuário;
         String cpfUsu;
 
+        // Pegando o cpd do usuário;
         cpfUsu = JOptionPane.showInputDialog(null, "Digite o seu CPF para entrar no campo alterar!", "Alterar Dados", JOptionPane.INFORMATION_MESSAGE);
 
         try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet usuario = new FestivalCinemaGramadoDao().buscarUsuario(cpfUsu);
 
-            if (usuario.next()) {
+            if (usuario.next()) { // Se o usuário for encontrado;
+                // Variáveis para pegar os dados do usuário;
                 String nome, sobrenome, cpf, email, senha, tipoUsu;
 
+                // Atribuindo as variáveis aos campos que contém os dados;
                 nome = usuario.getString("nome_usu");
                 sobrenome = usuario.getString("sobrenome_usu");
                 cpf = usuario.getString("cpf_usu");
@@ -336,9 +364,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 senha = usuario.getString("senha_usu");
                 tipoUsu = usuario.getString("tipo_usu");
 
+                // Instanciando a classe que altera os dados do usuário;
                 new AlterarDadosUsuario(nome, sobrenome, cpf, email, senha, tipoUsu).setVisible(true);
 
-            } else {
+            } else { // Se o usuário não for encontrado;
                 JOptionPane.showMessageDialog(null, "Usuario não encontrado", "Buscar Usuário", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -348,17 +377,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmAlterarInfoUsuarioActionPerformed
 
     private void itmExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExcluirUsuarioActionPerformed
+        // Variável para pegar o cpf do usuário;
         String cpf;
 
+        // Pegando o cpf do usuário;
         cpf = JOptionPane.showInputDialog(null, "Digite o CPF do usuário para excluí-lo", "Exluir Usuário", JOptionPane.INFORMATION_MESSAGE);
 
         try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             int resultado = new FestivalCinemaGramadoDao().excluirUsuario(cpf);
 
-            if (resultado == 1) {
+            if (resultado == 1) { // Se o usuário for encontrado e o seus dados excluídos;
                 JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso", "Excluir Usuário", JOptionPane.INFORMATION_MESSAGE);
 
-            } else {
+            } else { // Se o usuário não for encontrado;
                 JOptionPane.showMessageDialog(null, "Usuário não encontrado", "Excluir Usuário", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -369,20 +401,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmExcluirUsuarioActionPerformed
 
     private void itmCadastrarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmCadastrarFilmeActionPerformed
-        new CadastrarSubmissaoFilmes().setVisible(true);
+        new CadastrarSubmissaoFilmes().setVisible(true); // Instanciando a classe e deixando ela visível;
     }//GEN-LAST:event_itmCadastrarFilmeActionPerformed
 
     private void itmBuscarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmBuscarFilmeActionPerformed
+        // Variável para pegar o código da submissão do filme;
         String codFilme;
 
+        // Pegando o código da submissão do filme;
         codFilme = JOptionPane.showInputDialog(null, "Digite o código do filme para a busca", "Buscar Filme", JOptionPane.INFORMATION_MESSAGE);
 
         try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet filme = new FestivalCinemaGramadoDao().buscarFilme(codFilme);
 
-            if (filme.next()) {
+            if (filme.next()) { // Se a submissão de filme for encontrada;
+                // Variável para pegar todos os dados da submissão;
                 String id, film, duracao, classificacao, genero, nomeDiretor, sobrenomeDiretor, informacoes;
 
+                // Atribuindo as variáveis aos campos com os dados;
                 id = filme.getString("id_sub_film");
                 film = filme.getString("nome_sub_film");
                 duracao = filme.getString("duracao_sub_film");
@@ -392,6 +429,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 sobrenomeDiretor = filme.getString("sobrenome_diretor_sub_film");
                 informacoes = filme.getString("info_sub_film");
 
+                // Mensagem trazendo todos os dados da submissão do filme;
                 JOptionPane.showMessageDialog(null, "ID: " + id
                         + "\n" + "Nome do filme: " + film
                         + "\n" + "Duração: " + duracao
@@ -401,7 +439,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         + "\n" + "Sobrenome do diretor: " + sobrenomeDiretor
                         + "\n" + "Informações adicionais: " + informacoes);
 
-            } else {
+            } else { // Se a submissão do filme não for encontrada;
                 JOptionPane.showMessageDialog(null, "Filme não encontrado", "Buscar Filme", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -411,25 +449,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmBuscarFilmeActionPerformed
 
     private void itmListarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmListarUsuarioActionPerformed
-        new ListarUsuario().setVisible(true);
+        new ListarUsuario().setVisible(true); // Instancindo a classe e deixando ela visível;
     }//GEN-LAST:event_itmListarUsuarioActionPerformed
 
     private void itmListarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmListarFilmeActionPerformed
-        new ListarSubmissaoFilmes().setVisible(true);
+        new ListarSubmissaoFilmes().setVisible(true); // Instancindo a classe e deixando ela visível;
     }//GEN-LAST:event_itmListarFilmeActionPerformed
 
     private void itmAlterarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAlterarFilmeActionPerformed
-        // Váriáveis;
+        // Váriável para pegar o código da submissão do filme;
         String codFilme;
 
-        // Pegando o código do filme para alterar;
+        // Pegando o código da submissão do filme para alterar;
         codFilme = JOptionPane.showInputDialog(null, "Digite o código do filme para a alteração", "Alterar Filme", JOptionPane.INFORMATION_MESSAGE);
 
         try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet filme = new FestivalCinemaGramadoDao().buscarFilme(codFilme);
 
-            // Buscando as informações do filme;
-            if (filme.next()) {
+            if (filme.next()) { // Se o filme for encontrado;
                 // Variáveis que pegaram os valores dos campos;
                 String id, film, duracao, classificacao, genero, nomeDiretor, sobrenomeDiretor, informacoes;
 
@@ -446,8 +484,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 // Instanciando a classe "AlterarSubmissaoFilmes" para passar os dados das variáveis;
                 new AlterarSubmissaoFilmes(id, film, duracao, classificacao, genero, nomeDiretor, sobrenomeDiretor, informacoes).setVisible(true);
 
-                // Caso não encontre as informações do filme;
-            } else {
+            } else { // Caso não encontre as informações do filme;
                 JOptionPane.showMessageDialog(null, "Filme não encontrado", "Buscar Filme", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -457,19 +494,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmAlterarFilmeActionPerformed
 
     private void itmExcluirFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExcluirFilmeActionPerformed
+        // Variável para pegar o código da submissão do filme;
         String codFilme;
 
+        // Pegando o código da submissão do filme para a exclusão;
         codFilme = JOptionPane.showInputDialog(null, "Digite o código do filme para a exclusão", "Excluir Filme", JOptionPane.INFORMATION_MESSAGE);
 
         try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             int retorno = new FestivalCinemaGramadoDao().excluirSubmissaoFilmes(codFilme);
 
-            if (retorno == 1) {
+            if (retorno == 1) { // Se a submissão for encontrado e a mesma for excluida;
                 JOptionPane.showMessageDialog(null, "Filme excluído com sucesso", "Excluir Filme", JOptionPane.INFORMATION_MESSAGE);
 
-            } else {
+            } else { // Se a submissão não for encontrada;
                 JOptionPane.showMessageDialog(null, "Filme não encontrado", "Excluir Filme", JOptionPane.WARNING_MESSAGE);
-
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -478,33 +517,33 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmExcluirFilmeActionPerformed
 
     private void itmVerFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmVerFilmesActionPerformed
-        new ListarProgramacaoFilmes().setVisible(true);
+        new ListarProgramacaoFilmes().setVisible(true); // Instancindo a classe e deixando ela visível;
     }//GEN-LAST:event_itmVerFilmesActionPerformed
 
     private void itmCadastrarProgramacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmCadastrarProgramacaoActionPerformed
-        new CadastrarProgramacaoFilmes().setVisible(true);
+        new CadastrarProgramacaoFilmes().setVisible(true); // Instancindo a classe e deixando ela visível;
     }//GEN-LAST:event_itmCadastrarProgramacaoActionPerformed
 
     private void mnuMaisInformacoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuMaisInformacoesMouseClicked
-        new MaisInformacoes().setVisible(true);
+        new MaisInformacoes().setVisible(true); // Instancindo a classe e deixando ela visível;
     }//GEN-LAST:event_mnuMaisInformacoesMouseClicked
 
     private void itmListarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmListarEventosActionPerformed
-        new ListarEventosParalelos().setVisible(true);
+        new ListarEventosParalelos().setVisible(true); // Instancindo a classe e deixando ela visível;
     }//GEN-LAST:event_itmListarEventosActionPerformed
 
     private void itmAlterarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAlterarEventosActionPerformed
-        // Váriáveis;
+        // Váriável para pegar pegar o código do evento paralelo;
         String id_evt_paral;
 
-        // Pegando o código do evento para alterar;
+        // Pegando o código do evento para a alteração;
         id_evt_paral = JOptionPane.showInputDialog(null, "Digite o código do evento para a alteração", "Alterar Evento Paralelo", JOptionPane.INFORMATION_MESSAGE);
 
         try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet evento = new FestivalCinemaGramadoDao().buscarEventosParalelos(id_evt_paral);
 
-            // Buscando as informações do evento;
-            if (evento.next()) {
+            if (evento.next()) { // Se o evento for encontrado;
                 // Variáveis que pegaram os valores dos campos;
                 String id, nome, responsavel, info, local_evt, data_evt, hora_evt;
 
@@ -520,8 +559,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 // Instanciando a classe "AlterarEventosParalelos" para passar os dados das variáveis;
                 new AlterarEventosParalelos(id, nome, responsavel, info, local_evt, data_evt, hora_evt).setVisible(true);
 
-                // Caso não encontre as informações do Evento;
-            } else {
+            } else { // Caso não encontre as informações do Evento;
                 JOptionPane.showMessageDialog(null, "Evento não encontrado", "Buscar Evento", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -531,16 +569,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmAlterarEventosActionPerformed
 
     private void itmBuscarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmBuscarEventosActionPerformed
+        // Variável para pegar o código do evento paralelo;
         String id_evt_paral;
 
+        // Pegando o código do evento paralelo;
         id_evt_paral = JOptionPane.showInputDialog(null, "Digite o código do evento para a busca", "Buscar evento paralelo", JOptionPane.INFORMATION_MESSAGE);
 
         try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet evento = new FestivalCinemaGramadoDao().buscarEventosParalelos(id_evt_paral);
 
-            if (evento.next()) {
+            if (evento.next()) { // Se o evento for encontrado;
+                // Varivéis para pegar todos os dados do evento;
                 String id, nome, responsavel, info, local_evt, data_evt, hora_evt;
 
+                // Atribuindo as variáveis os campos conténdo os dados;
                 id = evento.getString("id_evt_paral");
                 nome = evento.getString("nome_evt_paral");
                 responsavel = evento.getString("responsavel_evt_paral");
@@ -549,16 +592,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 data_evt = evento.getString("data_evt_paral");
                 hora_evt = evento.getString("hora_evt_paral");
 
+                // Mensagem que contém todos os dados da busca;
                 JOptionPane.showMessageDialog(null, "ID: " + id
                         + "\n" + "Nome do evento: " + nome
                         + "\n" + "Responsável: " + responsavel
                         + "\n" + "Informações: " + info
                         + "\n" + "Local: " + local_evt
                         + "\n" + "Data: " + data_evt
-                        + "\n" + "Hora: " + hora_evt,  
+                        + "\n" + "Hora: " + hora_evt,
                         "Busca Evento Paralelo", JOptionPane.INFORMATION_MESSAGE);
 
-            } else {
+            } else { // Se o evento não for encontrado;
                 JOptionPane.showMessageDialog(null, "Evento não encontrado", "Buscar evento paralelo", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -568,19 +612,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmBuscarEventosActionPerformed
 
     private void itmExcluirEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExcluirEventosActionPerformed
+        // Variável para pegar o código do evento paralelo;
         String id_evt_paral;
 
+        // Pegando o código do evento paralelo;
         id_evt_paral = JOptionPane.showInputDialog(null, "Digite o código do evento para a exclusão", "Excluir Evento", JOptionPane.INFORMATION_MESSAGE);
 
         try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             int retorno = new FestivalCinemaGramadoDao().excluirEventosParalelos(id_evt_paral);
 
-            if (retorno == 1) {
+            if (retorno == 1) { // Se o evento for encontrado e seus dados excluido;
                 JOptionPane.showMessageDialog(null, "Evento excluído com sucesso", "Excluir Evento", JOptionPane.INFORMATION_MESSAGE);
 
-            } else {
+            } else { // Se o evento não for encontrado;
                 JOptionPane.showMessageDialog(null, "Evento não encontrado", "Excluir Evento", JOptionPane.WARNING_MESSAGE);
-
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -589,16 +635,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmExcluirEventosActionPerformed
 
     private void itmBuscarProgramacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmBuscarProgramacaoActionPerformed
-       String codProgramacao;
+        // Variável para pegar o código da programação;
+        String codProgramacao;
 
+        // Pegando o código da programação;
         codProgramacao = JOptionPane.showInputDialog(null, "Digite o código da programação para busca-lo", "Buscar Programação", JOptionPane.INFORMATION_MESSAGE);
 
         try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet programacao = new FestivalCinemaGramadoDao().buscarProgramacao(codProgramacao);
 
-            if (programacao.next()) {
+            if (programacao.next()) { // Se a programação for encontrada;
+                // Variáveis para pegar todos os dados da programação;
                 String idFilme, idProgramacao, local, data, hora, info;
 
+                // Pegando todos os dados da programação;
                 idFilme = programacao.getString("id_sub_film");
                 idProgramacao = programacao.getString("id_prog_film");
                 local = programacao.getString("local_prog_film");
@@ -606,6 +657,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 hora = programacao.getString("hora_prog_film");
                 info = programacao.getString("info_prog_film");
 
+                // Mensagem para mostrar todos os dados que foram buscados; 
                 JOptionPane.showMessageDialog(null, "ID do Filme: " + idFilme
                         + "\n" + "ID da Programação: " + idProgramacao
                         + "\n" + "Local: " + local
@@ -614,7 +666,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         + "\n" + "Informações: " + info,
                         "Buscar Programação", JOptionPane.INFORMATION_MESSAGE);
 
-            } else {
+            } else { // Se a programação não for encontrada;
                 JOptionPane.showMessageDialog(null, "Programação não encontrada", "Buscar Programação", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -624,16 +676,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmBuscarProgramacaoActionPerformed
 
     private void itmAlterarProgramacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAlterarProgramacaoActionPerformed
-       String codProgramacao;
+        // Variável para pegar o código da programação;
+        String codProgramacao;
 
+        // Pegando o código da programação;
         codProgramacao = JOptionPane.showInputDialog(null, "Digite o código da programação para busca-lo", "Buscar Programação", JOptionPane.INFORMATION_MESSAGE);
 
         try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet programacao = new FestivalCinemaGramadoDao().buscarProgramacao(codProgramacao);
 
-            if (programacao.next()) {
+            if (programacao.next()) { // Se a programação for encontrada;
+                // Variáveis para pegar todos os dados da programação;
                 String idFilme, idProgramacao, local, data, hora, info;
 
+                // Atribuindo todos os dados da programação;
                 idFilme = programacao.getString("id_sub_film");
                 idProgramacao = programacao.getString("id_prog_film");
                 local = programacao.getString("local_prog_film");
@@ -641,9 +698,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 hora = programacao.getString("hora_prog_film");
                 info = programacao.getString("info_prog_film");
 
+                // Instanciando a classe "AlterarProgramaçãoFilmes" para passar os dados das variáveis;
                 new AlterarProgramacaoFilmes(idFilme, idProgramacao, local, data, hora, info).setVisible(true);
-                
-            } else {
+
+            } else { // Se a programação não for encontrada;
                 JOptionPane.showMessageDialog(null, "Programação não encontrada", "Buscar Programação", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -653,25 +711,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmAlterarProgramacaoActionPerformed
 
     private void itmExcluirProgramacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExcluirProgramacaoActionPerformed
+        // Variável para pegar o código da programação;
         String codProgramacao;
 
+        // Pegando o código da programação;
         codProgramacao = JOptionPane.showInputDialog(null, "Digite o código da programação para a sua exclusão", "Excluir Programação", JOptionPane.INFORMATION_MESSAGE);
 
         try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             int retorno = new FestivalCinemaGramadoDao().excluirProgramacao(codProgramacao);
 
-            if (retorno == 1) {
+            if (retorno == 1) { // Se a programação for encontrada e seus dados excluidos;
                 JOptionPane.showMessageDialog(null, "Programação excluída com sucesso", "Excluir Programação", JOptionPane.INFORMATION_MESSAGE);
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Programação excluída encontrado", "Excluir Programação", JOptionPane.WARNING_MESSAGE);
-
+            } else { // Se a programação não for encontrada;
+                JOptionPane.showMessageDialog(null, "Programação não encontrada", "Excluir Programação", JOptionPane.WARNING_MESSAGE);
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
         }
-    
+
     }//GEN-LAST:event_itmExcluirProgramacaoActionPerformed
 
     /**
@@ -729,12 +789,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itmListarFilme;
     private javax.swing.JMenuItem itmListarUsuario;
     private javax.swing.JMenuItem itmVerFilmes;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JLabel lblImagemPrincipal;
     private javax.swing.JMenu mnuEventosParalelos;
     private javax.swing.JMenu mnuMaisInformacoes;
     private javax.swing.JMenu mnuProgramacaoFilmes;

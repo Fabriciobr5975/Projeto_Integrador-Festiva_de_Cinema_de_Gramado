@@ -100,7 +100,7 @@ public class ListarSubmissaoFilmes extends javax.swing.JFrame {
         lblFilme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblFilme.setText("Filme:");
         getContentPane().add(lblFilme);
-        lblFilme.setBounds(100, 40, 50, 40);
+        lblFilme.setBounds(10, 40, 50, 40);
 
         txtFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +108,7 @@ public class ListarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFilme);
-        txtFilme.setBounds(150, 40, 550, 40);
+        txtFilme.setBounds(60, 40, 830, 40);
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +117,7 @@ public class ListarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBuscar);
-        btnBuscar.setBounds(780, 40, 210, 40);
+        btnBuscar.setBounds(930, 40, 210, 40);
 
         setSize(new java.awt.Dimension(1172, 805));
         setLocationRelativeTo(null);

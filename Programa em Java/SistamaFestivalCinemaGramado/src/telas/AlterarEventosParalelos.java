@@ -25,8 +25,9 @@ public class AlterarEventosParalelos extends javax.swing.JFrame {
             String local_evt_paral, String data_evt_paral, String hora_evt_paral) {
         initComponents();
 
+        // Passando as informações do menu para os campos;
         txtId.setText(id_evt_paral);
-        txtId.setEnabled(false);
+        txtId.setEnabled(false); // Deixando o campo ID visível, porém não editável
         txtEvento.setText(nome_evt_paral);
         txtResponsavel.setText(responsavel_evt_paral);
         txtInformacoes.setText(info_evt_paral);
@@ -68,44 +69,45 @@ public class AlterarEventosParalelos extends javax.swing.JFrame {
 
         lblEvento.setText("Evento:");
         getContentPane().add(lblEvento);
-        lblEvento.setBounds(40, 90, 50, 40);
+        lblEvento.setBounds(20, 100, 50, 40);
         getContentPane().add(txtEvento);
-        txtEvento.setBounds(120, 90, 420, 40);
+        txtEvento.setBounds(110, 100, 450, 40);
 
         lblResponsavel.setText("Responsável:");
         getContentPane().add(lblResponsavel);
-        lblResponsavel.setBounds(40, 160, 70, 40);
+        lblResponsavel.setBounds(20, 170, 70, 40);
         getContentPane().add(txtResponsavel);
-        txtResponsavel.setBounds(120, 160, 420, 40);
+        txtResponsavel.setBounds(110, 170, 450, 40);
 
         lblData.setText("Data:");
         getContentPane().add(lblData);
-        lblData.setBounds(40, 230, 50, 40);
+        lblData.setBounds(20, 240, 50, 40);
         getContentPane().add(txtData);
-        txtData.setBounds(120, 230, 170, 40);
+        txtData.setBounds(110, 240, 180, 40);
 
         lblHora.setText("Hora:");
         getContentPane().add(lblHora);
-        lblHora.setBounds(320, 230, 70, 40);
+        lblHora.setBounds(330, 240, 70, 40);
         getContentPane().add(txtHora);
-        txtHora.setBounds(360, 230, 180, 40);
+        txtHora.setBounds(380, 240, 180, 40);
 
         lblInformacoes.setText("Informações:");
         getContentPane().add(lblInformacoes);
-        lblInformacoes.setBounds(40, 400, 70, 40);
+        lblInformacoes.setBounds(20, 420, 70, 40);
         getContentPane().add(txtLocal);
-        txtLocal.setBounds(120, 290, 420, 40);
+        txtLocal.setBounds(110, 310, 450, 40);
 
         lblLocal.setText("Local:");
         getContentPane().add(lblLocal);
-        lblLocal.setBounds(40, 290, 50, 40);
+        lblLocal.setBounds(20, 310, 50, 40);
 
         txtInformacoes.setColumns(20);
         txtInformacoes.setRows(5);
+        txtInformacoes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(txtInformacoes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(120, 360, 420, 120);
+        jScrollPane1.setBounds(110, 380, 450, 120);
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,21 +116,22 @@ public class AlterarEventosParalelos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(230, 530, 190, 50);
+        btnSalvar.setBounds(220, 530, 190, 50);
 
         lblId.setText("ID:");
         getContentPane().add(lblId);
-        lblId.setBounds(40, 30, 50, 40);
+        lblId.setBounds(20, 30, 50, 40);
         getContentPane().add(txtId);
-        txtId.setBounds(120, 30, 420, 40);
+        txtId.setBounds(110, 30, 450, 40);
 
         setSize(new java.awt.Dimension(630, 629));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // Varíaveis;
         String id_evt_paral, nome_evt_paral, responsavel_evt_paral, info_evt_paral, local_evt_paral, data_evt_paral, hora_evt_paral;
-        
+
         // Pegando as informações dos campos;
         id_evt_paral = txtId.getText();
         nome_evt_paral = txtEvento.getText();
@@ -145,13 +148,13 @@ public class AlterarEventosParalelos extends javax.swing.JFrame {
             // Mensagem para dizer que o evento foi cadastro;
             JOptionPane.showMessageDialog(null, "Evento alterado com sucesso", "Alteração de Evento Paralelo", JOptionPane.INFORMATION_MESSAGE);
 
-            // Limpar a tela e reposicionar o cursor do mouse;
+            // Fechar a tela após a execução dos comandos do "try" ou do "catch";
             dispose();
 
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
 
-        } 
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**

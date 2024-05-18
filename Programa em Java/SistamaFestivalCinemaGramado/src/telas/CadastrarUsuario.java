@@ -74,7 +74,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCadastrar);
-        btnCadastrar.setBounds(250, 270, 110, 30);
+        btnCadastrar.setBounds(260, 250, 110, 30);
 
         lblCpf.setText("CPF:");
         getContentPane().add(lblCpf);
@@ -96,7 +96,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         getContentPane().add(cmbTipoUsuario);
         cmbTipoUsuario.setBounds(400, 170, 210, 30);
 
-        setSize(new java.awt.Dimension(649, 338));
+        setSize(new java.awt.Dimension(649, 348));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     // cadastro do usuário

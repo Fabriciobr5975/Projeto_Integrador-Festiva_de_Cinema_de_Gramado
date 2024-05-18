@@ -42,17 +42,17 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
         lblLocal = new javax.swing.JLabel();
         txtLocal = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
-        lblIdProg = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
+        lblIdProgramacao = new javax.swing.JLabel();
+        txtIdProgramacao = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastar a programação dos filmes");
         getContentPane().setLayout(null);
 
         lblIdFilme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblIdFilme.setText("ID do Filme");
+        lblIdFilme.setText("Filme:");
         getContentPane().add(lblIdFilme);
-        lblIdFilme.setBounds(20, 30, 80, 40);
+        lblIdFilme.setBounds(10, 30, 80, 40);
 
         txtFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,24 +60,24 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFilme);
-        txtFilme.setBounds(100, 30, 410, 40);
+        txtFilme.setBounds(70, 30, 510, 40);
 
         lblInformacoes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblInformacoes.setText("Informações:");
         getContentPane().add(lblInformacoes);
-        lblInformacoes.setBounds(20, 350, 90, 40);
+        lblInformacoes.setBounds(20, 370, 90, 40);
 
         txtInformacoes.setColumns(20);
         txtInformacoes.setRows(5);
         jScrollPane1.setViewportView(txtInformacoes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(110, 320, 400, 120);
+        jScrollPane1.setBounds(130, 340, 450, 120);
 
         lblData.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblData.setText("Data:");
         getContentPane().add(lblData);
-        lblData.setBounds(20, 240, 80, 40);
+        lblData.setBounds(20, 250, 80, 40);
 
         txtData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,12 +85,12 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtData);
-        txtData.setBounds(100, 240, 180, 40);
+        txtData.setBounds(80, 250, 220, 40);
 
         lblHora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblHora.setText("Hora:");
         getContentPane().add(lblHora);
-        lblHora.setBounds(310, 240, 40, 40);
+        lblHora.setBounds(310, 250, 40, 40);
 
         txtHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,12 +98,12 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtHora);
-        txtHora.setBounds(360, 240, 150, 40);
+        txtHora.setBounds(360, 250, 220, 40);
 
         lblLocal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblLocal.setText("Local:");
         getContentPane().add(lblLocal);
-        lblLocal.setBounds(20, 170, 60, 40);
+        lblLocal.setBounds(20, 180, 60, 40);
 
         txtLocal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +111,7 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtLocal);
-        txtLocal.setBounds(100, 170, 410, 40);
+        txtLocal.setBounds(80, 180, 500, 40);
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -120,22 +120,16 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(190, 470, 210, 50);
+        btnSalvar.setBounds(200, 500, 220, 40);
 
-        lblIdProg.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblIdProg.setText("ID Prog:");
-        getContentPane().add(lblIdProg);
-        lblIdProg.setBounds(20, 100, 60, 40);
+        lblIdProgramacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblIdProgramacao.setText("Programação:");
+        getContentPane().add(lblIdProgramacao);
+        lblIdProgramacao.setBounds(10, 100, 130, 40);
+        getContentPane().add(txtIdProgramacao);
+        txtIdProgramacao.setBounds(120, 100, 460, 40);
 
-        txtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtId);
-        txtId.setBounds(100, 100, 410, 40);
-
-        setSize(new java.awt.Dimension(587, 559));
+        setSize(new java.awt.Dimension(624, 600));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -155,35 +149,46 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLocalActionPerformed
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // Variáveis;
         String idFilme, idProgramacao, local, data, hora, info;
-        
+
+        // Atribuindo as variáveis aos campos;
         idFilme = txtFilme.getText();
-        idProgramacao = txtId.getText();
+        idProgramacao = txtIdProgramacao.getText();
         local = txtLocal.getText();
         data = txtData.getText();
         hora = txtHora.getText();
         info = txtInformacoes.getText();
-        
-        try{
-           new FestivalCinemaGramadoDao().cadastrarProgramacao(idFilme, idProgramacao, local, data, hora, info);
-           
-           JOptionPane.showMessageDialog(null, "Programação cadastrada com sucesso", "Cadastro da Programação", JOptionPane.INFORMATION_MESSAGE);
-           
-           txtFilme.setText("");
-           txtId.setText("");
-           txtLocal.setText("");
-           txtData.setText("");
-           txtHora.setText("");
-           txtInformacoes.setText("");
-           txtFilme.requestFocus();
-           
-        } catch(ClassNotFoundException | SQLException ex){
+
+        try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
+            new FestivalCinemaGramadoDao().cadastrarProgramacao(idFilme, idProgramacao, local, data, hora, info);
+
+            // Mensagem para dizer que a programação foi cadastrada;
+            JOptionPane.showMessageDialog(null, "Programação cadastrada com sucesso", "Cadastro da Programação", JOptionPane.INFORMATION_MESSAGE);
+
+            // Limpando os campos;
+            txtFilme.setText("");
+            txtIdProgramacao.setText("");
+            txtLocal.setText("");
+            txtData.setText("");
+            txtHora.setText("");
+            txtInformacoes.setText("");
+            txtIdProgramacao.requestFocus(); // Reposicionando o cursor do mouse;
+
+        } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+
+        } catch (SQLException ex) {
+            String erro = ex.getMessage();
+
+            if (erro.contains("cannot be null")) {
+                JOptionPane.showMessageDialog(null, "Filme não encontrado! Verifique se o nome do filme está correto", "Filme não encontrado", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+            }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -228,13 +233,13 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblIdFilme;
-    private javax.swing.JLabel lblIdProg;
+    private javax.swing.JLabel lblIdProgramacao;
     private javax.swing.JLabel lblInformacoes;
     private javax.swing.JLabel lblLocal;
     private javax.swing.JTextField txtData;
     private javax.swing.JTextField txtFilme;
     private javax.swing.JTextField txtHora;
-    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtIdProgramacao;
     private javax.swing.JTextArea txtInformacoes;
     private javax.swing.JTextField txtLocal;
     // End of variables declaration//GEN-END:variables
