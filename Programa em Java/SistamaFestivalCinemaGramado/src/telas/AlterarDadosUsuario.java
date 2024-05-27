@@ -23,18 +23,18 @@ public class AlterarDadosUsuario extends javax.swing.JFrame {
 
     public AlterarDadosUsuario(String nome, String sobrenome, String cpf, String email, String senha, String tipoUsu) {
         initComponents();
-        
+
+        // Passando as informações do menu para os campos;
         txtNome.setText(nome);
         txtSobrenome.setText(sobrenome);
         txtCpf.setText(cpf);
-        txtCpf.setEnabled(false); // Deixar o campo Email visível, pórem não editável
+        txtCpf.setEnabled(false); // Deixar o campo CPF visível, pórem não editável
         txtEmail.setText(email);
-        txtEmail.setEditable(false); // Deixar o campo Email visível, pórem não editável
         txtSenha.setText(senha);
         cmbTipoUsuario.setSelectedItem(tipoUsu);
+        cmbTipoUsuario.setEnabled(false); // Deixar o campo Tipo visível, porém não editável
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,29 +106,33 @@ public class AlterarDadosUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvarAlteracoes);
-        btnSalvarAlteracoes.setBounds(240, 270, 160, 30);
+        btnSalvarAlteracoes.setBounds(240, 250, 160, 30);
 
         setSize(new java.awt.Dimension(662, 344));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarAlteracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarAlteracoesActionPerformed
-       String nome, sobrenome, senha, cpf;
-       
-       nome = txtNome.getText();
-       sobrenome = txtSobrenome.getText();
-       senha = txtSenha.getText();
-       cpf = txtCpf.getText();
-       
-       try {
-            new FestivalCinemaGramadoDao().alterarUsuario(nome, sobrenome, senha, cpf);
-            
+        // Variáveis para pegar os campos;
+        String nome, sobrenome, senha, cpf;
+
+        // Atribuindo as informações dos campos nas variáveis;
+        nome = txtNome.getText();
+        sobrenome = txtSobrenome.getText();
+        senha = txtSenha.getText();
+        cpf = txtCpf.getText();
+
+        try {
+            // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
+            new FestivalCinemaGramadoDao().alterarUsuario(nome, sobrenome, senha, cpf); 
+
+            // Mensagem mostrando que os dados foram alterados;
             JOptionPane.showMessageDialog(null, "Seus dados foram alterados com sucesso", "Alterar Dados", JOptionPane.INFORMATION_MESSAGE);
-            
+
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
 
-        } 
+        }
     }//GEN-LAST:event_btnSalvarAlteracoesActionPerformed
 
     /**

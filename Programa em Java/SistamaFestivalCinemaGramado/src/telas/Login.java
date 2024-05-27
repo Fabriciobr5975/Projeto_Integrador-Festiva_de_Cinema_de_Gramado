@@ -35,7 +35,7 @@ public class Login extends javax.swing.JFrame {
         lblSenha = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         pswSenha = new javax.swing.JPasswordField();
-        btnEntrar4 = new javax.swing.JButton();
+        btnEntrar = new javax.swing.JButton();
         lblMsgCadastro = new javax.swing.JLabel();
         bntAbrirTelaCadastro = new javax.swing.JButton();
 
@@ -43,30 +43,50 @@ public class Login extends javax.swing.JFrame {
         setTitle("Login");
         getContentPane().setLayout(null);
 
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblEmail.setText("Email:");
         getContentPane().add(lblEmail);
         lblEmail.setBounds(20, 30, 50, 30);
 
+        lblSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblSenha.setText("Senha:");
         getContentPane().add(lblSenha);
         lblSenha.setBounds(20, 100, 50, 30);
-        getContentPane().add(txtEmail);
-        txtEmail.setBounds(80, 30, 360, 30);
-        getContentPane().add(pswSenha);
-        pswSenha.setBounds(80, 100, 360, 30);
 
-        btnEntrar4.setText("Entrar");
-        btnEntrar4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrar4ActionPerformed(evt);
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmailKeyPressed(evt);
             }
         });
-        getContentPane().add(btnEntrar4);
-        btnEntrar4.setBounds(190, 170, 90, 30);
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(80, 30, 400, 30);
 
+        pswSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pswSenhaKeyPressed(evt);
+            }
+        });
+        getContentPane().add(pswSenha);
+        pswSenha.setBounds(80, 100, 400, 30);
+
+        btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
+        btnEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnEntrarKeyPressed(evt);
+            }
+        });
+        getContentPane().add(btnEntrar);
+        btnEntrar.setBounds(210, 170, 90, 30);
+
+        lblMsgCadastro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblMsgCadastro.setText("Não tem cadastro? Faça o seu cadastro agora mesmo!");
         getContentPane().add(lblMsgCadastro);
-        lblMsgCadastro.setBounds(30, 240, 290, 30);
+        lblMsgCadastro.setBounds(20, 240, 350, 30);
 
         bntAbrirTelaCadastro.setText("Cadastre-se");
         bntAbrirTelaCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -75,41 +95,65 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bntAbrirTelaCadastro);
-        bntAbrirTelaCadastro.setBounds(330, 240, 100, 30);
+        bntAbrirTelaCadastro.setBounds(370, 240, 100, 30);
 
-        setSize(new java.awt.Dimension(489, 314));
+        setSize(new java.awt.Dimension(523, 325));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEntrar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrar4ActionPerformed
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        // Variáveis;
         String email, senha;
 
+        // Pegando os dados dos campos e atribuindo a uma variável;
         email = txtEmail.getText();
         senha = pswSenha.getText();
 
         try {
+            // Instanciamento do Objeto Usuario que recebe o método "loginUsuario";
             ResultSet usuario = new FestivalCinemaGramadoDao().loginUsuario(email, senha);
-            if (usuario.next()) {
+
+            if (usuario.next()) { //Se o usuário for encontrado;
                 String tipoUsu;
 
+                // Pegando o tipo de usuário;
                 tipoUsu = usuario.getString("tipo_usu");
-                
-                dispose();
+
+                dispose(); //Fechando a tela atual;
+                //Abrindo o menu com de acordo com o tipo do usuário;
                 new MenuPrincipal(tipoUsu).setVisible(true);
-            
-            } else {
+
+            } else { //Se não for encontrado;
                 JOptionPane.showMessageDialog(null, "Usuário não identificado");
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
-        } 
-    }//GEN-LAST:event_btnEntrar4ActionPerformed
+        }
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void bntAbrirTelaCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAbrirTelaCadastroActionPerformed
-        new CadastrarUsuario().setVisible(true);
-        dispose();
+        new CadastrarUsuario().setVisible(true); // Abrir a tela de cadastro de usuários caso o usuário não tenha um login
+        dispose(); // Fechar a tela atual após a tela de cadastrar usuário ser carregada e aberta
     }//GEN-LAST:event_bntAbrirTelaCadastroActionPerformed
+
+    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            pswSenha.requestFocus();
+        }
+    }//GEN-LAST:event_txtEmailKeyPressed
+
+    private void pswSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswSenhaKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            btnEntrar.requestFocus();
+        }
+    }//GEN-LAST:event_pswSenhaKeyPressed
+
+    private void btnEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEntrarKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            btnEntrar.doClick();
+        }
+    }//GEN-LAST:event_btnEntrarKeyPressed
 
     /**
      * @param args the command line arguments
@@ -148,7 +192,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntAbrirTelaCadastro;
-    private javax.swing.JButton btnEntrar4;
+    private javax.swing.JButton btnEntrar;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblMsgCadastro;
     private javax.swing.JLabel lblSenha;

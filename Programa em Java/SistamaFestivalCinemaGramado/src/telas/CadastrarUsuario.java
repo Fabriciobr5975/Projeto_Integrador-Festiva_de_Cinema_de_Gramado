@@ -46,7 +46,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         cmbTipoUsuario = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastrar-Se");
+        setTitle("Cadastrar-se");
         getContentPane().setLayout(null);
 
         lblNome.setText("Nome:");
@@ -74,7 +74,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCadastrar);
-        btnCadastrar.setBounds(250, 270, 110, 30);
+        btnCadastrar.setBounds(250, 260, 110, 30);
 
         lblCpf.setText("CPF:");
         getContentPane().add(lblCpf);
@@ -96,7 +96,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         getContentPane().add(cmbTipoUsuario);
         cmbTipoUsuario.setBounds(400, 170, 210, 30);
 
-        setSize(new java.awt.Dimension(649, 338));
+        setSize(new java.awt.Dimension(649, 348));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     // cadastro do usuário
@@ -117,6 +117,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Usuário cadastro com sucesso", "Usuário Cadastrado", JOptionPane.INFORMATION_MESSAGE);
             dispose(); // Fechar a tela após a mensagem;
             new Login().setVisible(true);
+            dispose();
             
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());

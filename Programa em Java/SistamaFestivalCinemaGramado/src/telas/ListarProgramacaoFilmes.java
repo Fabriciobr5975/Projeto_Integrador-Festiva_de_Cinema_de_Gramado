@@ -34,14 +34,14 @@ public class ListarProgramacaoFilmes extends javax.swing.JFrame {
 
             while (programacao.next()) {
                 String[] linha = {
-                    programacao.getString("nome_sub_film"),
-                    programacao.getString("local_prog_film "),
-                    programacao.getString("data_prog_film"),
-                    programacao.getString("hora_prog_film"),
-                    programacao.getString("categoria_sub_film"),
-                    programacao.getString("faixa_etaria_sub_film"),
-                    programacao.getString("CONCAT(info_sub_film,' ', sobrenome_diretor_sub_film)"),
-                    programacao.getString("info_prog_film")
+                    programacao.getString("Filme"),
+                    programacao.getString("Local"),
+                    programacao.getString("Data"),
+                    programacao.getString("Hora"),
+                    programacao.getString("Categoria"),
+                    programacao.getString("Classificação"),
+                    programacao.getString("Diretor"),
+                    programacao.getString("Informações")
                 };
 
                 tblModelo.addRow(linha);
@@ -74,7 +74,7 @@ public class ListarProgramacaoFilmes extends javax.swing.JFrame {
         lblFilme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblFilme.setText("Filme:");
         getContentPane().add(lblFilme);
-        lblFilme.setBounds(110, 40, 50, 40);
+        lblFilme.setBounds(20, 40, 50, 40);
 
         txtFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,11 +82,16 @@ public class ListarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFilme);
-        txtFilme.setBounds(180, 40, 410, 40);
+        txtFilme.setBounds(90, 40, 790, 40);
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnBuscar);
-        btnBuscar.setBounds(720, 40, 210, 40);
+        btnBuscar.setBounds(930, 40, 210, 40);
 
         tblProgramacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,6 +124,38 @@ public class ListarProgramacaoFilmes extends javax.swing.JFrame {
     private void txtFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilmeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFilmeActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String filme;
+       
+       filme = txtFilme.getText();
+       
+        try {
+
+            ResultSet programacao = new FestivalCinemaGramadoDao().ListarProgramacaoPorNome(filme);
+
+            DefaultTableModel tblModelo = (DefaultTableModel) tblProgramacao.getModel();
+            tblModelo.setRowCount(0);
+
+            while (programacao.next()) {
+                String[] linha = {
+                    programacao.getString("Filme"),
+                    programacao.getString("Local"),
+                    programacao.getString("Data"),
+                    programacao.getString("Hora"),
+                    programacao.getString("Categoria"),
+                    programacao.getString("Classificação"),
+                    programacao.getString("Diretor"),
+                    programacao.getString("Informações")
+                };
+
+                tblModelo.addRow(linha);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments

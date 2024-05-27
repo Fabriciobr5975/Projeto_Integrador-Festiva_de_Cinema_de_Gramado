@@ -86,6 +86,7 @@ public class CadastrarEventosParalelos extends javax.swing.JFrame {
         lblLocal.setBounds(40, 290, 50, 40);
 
         txtInformacoes.setColumns(20);
+        txtInformacoes.setLineWrap(true);
         txtInformacoes.setRows(5);
         jScrollPane1.setViewportView(txtInformacoes);
 

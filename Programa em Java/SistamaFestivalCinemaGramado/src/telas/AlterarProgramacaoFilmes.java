@@ -4,6 +4,10 @@
  */
 package telas;
 
+import java.sql.SQLException;
+import dao.FestivalCinemaGramadoDao;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ruan.lviana
@@ -17,6 +21,18 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
         initComponents();
     }
 
+    public AlterarProgramacaoFilmes(String idFilme, String idProgramacao, String local, String data, String hora, String info) {
+        initComponents();
+        
+        txtFilme.setText(idFilme);
+        txtId.setText(idProgramacao);
+        txtId.setEnabled(false);
+        txtLocal.setText(local);
+        txtData.setText(data);
+        txtHora.setText(hora);
+        txtInformacoes.setText(info);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,7 +54,7 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
         lblLocal = new javax.swing.JLabel();
         txtLocal = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
-        lblId = new javax.swing.JLabel();
+        lblProgramacao = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -64,11 +80,12 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
         lblInformacoes.setBounds(20, 350, 90, 40);
 
         txtInformacoes.setColumns(20);
+        txtInformacoes.setLineWrap(true);
         txtInformacoes.setRows(5);
         jScrollPane1.setViewportView(txtInformacoes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(110, 320, 400, 120);
+        jScrollPane1.setBounds(120, 320, 390, 120);
 
         lblData.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblData.setText("Data:");
@@ -110,13 +127,18 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
         txtLocal.setBounds(100, 170, 410, 40);
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSalvar);
         btnSalvar.setBounds(190, 470, 210, 50);
 
-        lblId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblId.setText("ID:");
-        getContentPane().add(lblId);
-        lblId.setBounds(30, 100, 30, 40);
+        lblProgramacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblProgramacao.setText("Programação:");
+        getContentPane().add(lblProgramacao);
+        lblProgramacao.setBounds(30, 100, 100, 40);
 
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +146,7 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtId);
-        txtId.setBounds(100, 100, 410, 40);
+        txtId.setBounds(130, 100, 380, 40);
 
         setSize(new java.awt.Dimension(580, 559));
         setLocationRelativeTo(null);
@@ -149,6 +171,36 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        String idFilme, idProgramacao, local, data, hora, info;
+        
+        idFilme = txtFilme.getText();
+        idProgramacao = txtId.getText();
+        local = txtLocal.getText();
+        data = txtData.getText();
+        hora = txtHora.getText();
+        info = txtInformacoes.getText();
+        
+        try{
+           new FestivalCinemaGramadoDao().alterarProgramacao(idFilme, idProgramacao, local, data, hora, info);
+           
+            JOptionPane.showMessageDialog(null, "Programação alterada com sucesso", "Alterar Programação", JOptionPane.INFORMATION_MESSAGE);
+           
+           txtFilme.setText("");
+           txtId.setText("");
+           txtLocal.setText("");
+           txtData.setText("");
+           txtHora.setText("");
+           txtInformacoes.setText("");
+           txtFilme.requestFocus();
+           
+           dispose();
+           
+        } catch(ClassNotFoundException | SQLException ex){
+            JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,9 +243,9 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblFilme;
     private javax.swing.JLabel lblHora;
-    private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblInformacoes;
     private javax.swing.JLabel lblLocal;
+    private javax.swing.JLabel lblProgramacao;
     private javax.swing.JTextField txtData;
     private javax.swing.JTextField txtFilme;
     private javax.swing.JTextField txtHora;
