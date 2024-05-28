@@ -52,7 +52,7 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
         lblIdFilme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblIdFilme.setText("Filme:");
         getContentPane().add(lblIdFilme);
-        lblIdFilme.setBounds(10, 30, 80, 40);
+        lblIdFilme.setBounds(20, 90, 80, 30);
 
         txtFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,24 +60,25 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFilme);
-        txtFilme.setBounds(70, 30, 510, 40);
+        txtFilme.setBounds(130, 90, 460, 30);
 
         lblInformacoes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblInformacoes.setText("Informações:");
         getContentPane().add(lblInformacoes);
-        lblInformacoes.setBounds(20, 370, 90, 40);
+        lblInformacoes.setBounds(20, 330, 90, 40);
 
         txtInformacoes.setColumns(20);
+        txtInformacoes.setLineWrap(true);
         txtInformacoes.setRows(5);
         jScrollPane1.setViewportView(txtInformacoes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(130, 340, 450, 120);
+        jScrollPane1.setBounds(140, 290, 450, 120);
 
         lblData.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblData.setText("Data:");
         getContentPane().add(lblData);
-        lblData.setBounds(20, 250, 80, 40);
+        lblData.setBounds(20, 210, 80, 30);
 
         txtData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,12 +86,12 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtData);
-        txtData.setBounds(80, 250, 220, 40);
+        txtData.setBounds(130, 210, 190, 30);
 
         lblHora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblHora.setText("Hora:");
         getContentPane().add(lblHora);
-        lblHora.setBounds(310, 250, 40, 40);
+        lblHora.setBounds(350, 210, 40, 30);
 
         txtHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,12 +99,12 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtHora);
-        txtHora.setBounds(360, 250, 220, 40);
+        txtHora.setBounds(400, 210, 190, 30);
 
         lblLocal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblLocal.setText("Local:");
         getContentPane().add(lblLocal);
-        lblLocal.setBounds(20, 180, 60, 40);
+        lblLocal.setBounds(20, 150, 60, 30);
 
         txtLocal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,8 +112,9 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtLocal);
-        txtLocal.setBounds(80, 180, 500, 40);
+        txtLocal.setBounds(130, 150, 460, 30);
 
+        btnSalvar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,16 +122,16 @@ public class CadastrarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(200, 500, 220, 40);
+        btnSalvar.setBounds(240, 470, 180, 40);
 
         lblIdProgramacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblIdProgramacao.setText("Programação:");
         getContentPane().add(lblIdProgramacao);
-        lblIdProgramacao.setBounds(10, 100, 130, 40);
+        lblIdProgramacao.setBounds(20, 30, 130, 30);
         getContentPane().add(txtIdProgramacao);
-        txtIdProgramacao.setBounds(120, 100, 460, 40);
+        txtIdProgramacao.setBounds(130, 30, 460, 30);
 
-        setSize(new java.awt.Dimension(624, 600));
+        setSize(new java.awt.Dimension(650, 593));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

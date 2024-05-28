@@ -42,7 +42,8 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblFilme = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
+        lblIdFilme = new javax.swing.JLabel();
         txtFilme = new javax.swing.JTextField();
         lblInformacoes = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -53,78 +54,14 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
         txtHora = new javax.swing.JTextField();
         lblLocal = new javax.swing.JLabel();
         txtLocal = new javax.swing.JTextField();
-        btnSalvar = new javax.swing.JButton();
-        lblProgramacao = new javax.swing.JLabel();
+        lblId = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alterar a programação dos filmes");
         getContentPane().setLayout(null);
 
-        lblFilme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblFilme.setText("Filme:");
-        getContentPane().add(lblFilme);
-        lblFilme.setBounds(30, 30, 50, 40);
-
-        txtFilme.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFilmeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtFilme);
-        txtFilme.setBounds(100, 30, 410, 40);
-
-        lblInformacoes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblInformacoes.setText("Informações:");
-        getContentPane().add(lblInformacoes);
-        lblInformacoes.setBounds(20, 350, 90, 40);
-
-        txtInformacoes.setColumns(20);
-        txtInformacoes.setRows(5);
-        jScrollPane1.setViewportView(txtInformacoes);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(120, 320, 390, 120);
-
-        lblData.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblData.setText("Data:");
-        getContentPane().add(lblData);
-        lblData.setBounds(30, 240, 80, 40);
-
-        txtData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDataActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtData);
-        txtData.setBounds(100, 240, 180, 40);
-
-        lblHora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblHora.setText("Hora:");
-        getContentPane().add(lblHora);
-        lblHora.setBounds(310, 240, 40, 40);
-
-        txtHora.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHoraActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtHora);
-        txtHora.setBounds(360, 240, 150, 40);
-
-        lblLocal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblLocal.setText("Local:");
-        getContentPane().add(lblLocal);
-        lblLocal.setBounds(30, 170, 60, 40);
-
-        txtLocal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLocalActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtLocal);
-        txtLocal.setBounds(100, 170, 410, 40);
-
+        btnSalvar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,44 +69,83 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(190, 470, 210, 50);
+        btnSalvar.setBounds(240, 470, 170, 40);
 
-        lblProgramacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblProgramacao.setText("Programação:");
-        getContentPane().add(lblProgramacao);
-        lblProgramacao.setBounds(30, 100, 100, 40);
+        lblIdFilme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblIdFilme.setText("Filme:");
+        getContentPane().add(lblIdFilme);
+        lblIdFilme.setBounds(20, 90, 80, 30);
 
-        txtId.addActionListener(new java.awt.event.ActionListener() {
+        txtFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
+                txtFilmeActionPerformed(evt);
             }
         });
-        getContentPane().add(txtId);
-        txtId.setBounds(130, 100, 380, 40);
+        getContentPane().add(txtFilme);
+        txtFilme.setBounds(130, 90, 460, 30);
 
-        setSize(new java.awt.Dimension(580, 559));
+        lblInformacoes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblInformacoes.setText("Informações:");
+        getContentPane().add(lblInformacoes);
+        lblInformacoes.setBounds(20, 330, 90, 40);
+
+        txtInformacoes.setColumns(20);
+        txtInformacoes.setLineWrap(true);
+        txtInformacoes.setRows(5);
+        jScrollPane1.setViewportView(txtInformacoes);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(140, 290, 450, 120);
+
+        lblData.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblData.setText("Data:");
+        getContentPane().add(lblData);
+        lblData.setBounds(20, 210, 80, 30);
+
+        txtData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDataActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtData);
+        txtData.setBounds(130, 210, 190, 30);
+
+        lblHora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHora.setText("Hora:");
+        getContentPane().add(lblHora);
+        lblHora.setBounds(350, 210, 40, 30);
+
+        txtHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHoraActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtHora);
+        txtHora.setBounds(400, 210, 190, 30);
+
+        lblLocal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblLocal.setText("Local:");
+        getContentPane().add(lblLocal);
+        lblLocal.setBounds(20, 150, 60, 30);
+
+        txtLocal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLocalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtLocal);
+        txtLocal.setBounds(130, 150, 460, 30);
+
+        lblId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblId.setText("Programação:");
+        getContentPane().add(lblId);
+        lblId.setBounds(20, 30, 130, 30);
+        getContentPane().add(txtId);
+        txtId.setBounds(130, 30, 460, 30);
+
+        setSize(new java.awt.Dimension(646, 585));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilmeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFilmeActionPerformed
-
-    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDataActionPerformed
-
-    private void txtHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtHoraActionPerformed
-
-    private void txtLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLocalActionPerformed
-
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         String idFilme, idProgramacao, local, data, hora, info;
@@ -200,6 +176,22 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void txtFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilmeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFilmeActionPerformed
+
+    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDataActionPerformed
+
+    private void txtHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHoraActionPerformed
+
+    private void txtLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLocalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,11 +232,11 @@ public class AlterarProgramacaoFilmes extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblData;
-    private javax.swing.JLabel lblFilme;
     private javax.swing.JLabel lblHora;
+    private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblIdFilme;
     private javax.swing.JLabel lblInformacoes;
     private javax.swing.JLabel lblLocal;
-    private javax.swing.JLabel lblProgramacao;
     private javax.swing.JTextField txtData;
     private javax.swing.JTextField txtFilme;
     private javax.swing.JTextField txtHora;

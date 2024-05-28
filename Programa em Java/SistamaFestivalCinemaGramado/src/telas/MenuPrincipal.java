@@ -50,6 +50,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
             itmAlterarProgramacao.setVisible(false);
             itmExcluirProgramacao.setVisible(false);
             itmBuscarEventos.setVisible(false);
+            itmExcluirEventos.setVisible(false);
+            itmExcluirFilme.setVisible(false);
+            itmBuscarFilme.setVisible(false);
 
         } else if (tipoUsu.equalsIgnoreCase("Avaliador")) {
             itmBuscarUsuario.setVisible(false);
@@ -58,7 +61,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             mnuProgramacaoFilmes.setVisible(false);
             mnuSubmissaoFilmes.setVisible(false);
             mnuEventosParalelos.setVisible(false);
-
         }
     }
 
@@ -107,9 +109,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblImagemPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/img-festival-cinema-full.jpg"))); // NOI18N
-        lblImagemPrincipal.setText("jLabel1");
         getContentPane().add(lblImagemPrincipal);
-        lblImagemPrincipal.setBounds(-10, -30, 840, 560);
+        lblImagemPrincipal.setBounds(-10, -30, 850, 560);
 
         mnuUsuario.setText("Usuario");
 
@@ -293,7 +294,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(829, 536));
+        setSize(new java.awt.Dimension(855, 536));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -308,6 +309,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Pegando o cpf do usuário;
         cpfUsu = JOptionPane.showInputDialog(null, "Digite o CPF do usuário", "Buscar Usuário", JOptionPane.INFORMATION_MESSAGE);
 
+        // Para interromper a execusão do código abaixo;
+        if(cpfUsu == null){
+            return;
+        } 
+        
         try {
             // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet usuario = new FestivalCinemaGramadoDao().buscarUsuario(cpfUsu);
@@ -329,7 +335,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         + "\n" + "CPF: " + cpf
                         + "\n" + "E-Mail: " + email
                         + "\n" + "Senha: " + senha
-                        + "\n" + "Tipo de Usuário: " + tipoUsu);
+                        + "\n" + "Tipo de Usuário: " + tipoUsu,
+                        "Buscar Usuário", JOptionPane.INFORMATION_MESSAGE);
 
             } else { // Se o usuário não for encontrado;
                 JOptionPane.showMessageDialog(null, "Usuario não encontrado", "Buscar Usuário", JOptionPane.WARNING_MESSAGE);
@@ -348,6 +355,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Pegando o cpd do usuário;
         cpfUsu = JOptionPane.showInputDialog(null, "Digite o seu CPF para entrar no campo alterar!", "Alterar Dados", JOptionPane.INFORMATION_MESSAGE);
 
+        // Para interromper a execusão do código abaixo;
+        if(cpfUsu == null){
+            return;
+        } 
+        
         try {
             // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet usuario = new FestivalCinemaGramadoDao().buscarUsuario(cpfUsu);
@@ -378,14 +390,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void itmExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExcluirUsuarioActionPerformed
         // Variável para pegar o cpf do usuário;
-        String cpf;
+        String cpfUsu;
 
         // Pegando o cpf do usuário;
-        cpf = JOptionPane.showInputDialog(null, "Digite o CPF do usuário para excluí-lo", "Exluir Usuário", JOptionPane.INFORMATION_MESSAGE);
+        cpfUsu = JOptionPane.showInputDialog(null, "Digite o CPF do usuário para excluí-lo", "Excluir Usuário", JOptionPane.INFORMATION_MESSAGE);
 
+        // Para interromper a execusão do código abaixo;
+        if(cpfUsu == null){
+            return;
+        } 
+        
         try {
             // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
-            int resultado = new FestivalCinemaGramadoDao().excluirUsuario(cpf);
+            int resultado = new FestivalCinemaGramadoDao().excluirUsuario(cpfUsu);
 
             if (resultado == 1) { // Se o usuário for encontrado e o seus dados excluídos;
                 JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso", "Excluir Usuário", JOptionPane.INFORMATION_MESSAGE);
@@ -411,6 +428,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Pegando o código da submissão do filme;
         codFilme = JOptionPane.showInputDialog(null, "Digite o código do filme para a busca", "Buscar Filme", JOptionPane.INFORMATION_MESSAGE);
 
+        // Para interromper a execusão do código abaixo;
+        if(codFilme == null){
+            return;
+        }
+        
         try {
             // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet filme = new FestivalCinemaGramadoDao().buscarFilme(codFilme);
@@ -437,7 +459,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         + "\n" + "Gênero: " + genero
                         + "\n" + "Nome do diretor: " + nomeDiretor
                         + "\n" + "Sobrenome do diretor: " + sobrenomeDiretor
-                        + "\n" + "Informações adicionais: " + informacoes);
+                        + "\n" + "Informações adicionais: " + informacoes,
+                        "Buscar Filme", JOptionPane.INFORMATION_MESSAGE);
 
             } else { // Se a submissão do filme não for encontrada;
                 JOptionPane.showMessageDialog(null, "Filme não encontrado", "Buscar Filme", JOptionPane.WARNING_MESSAGE);
@@ -463,6 +486,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Pegando o código da submissão do filme para alterar;
         codFilme = JOptionPane.showInputDialog(null, "Digite o código do filme para a alteração", "Alterar Filme", JOptionPane.INFORMATION_MESSAGE);
 
+        // Para interromper a execusão do código abaixo;
+        if(codFilme == null){
+            return;
+        }
+        
         try {
             // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet filme = new FestivalCinemaGramadoDao().buscarFilme(codFilme);
@@ -500,6 +528,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Pegando o código da submissão do filme para a exclusão;
         codFilme = JOptionPane.showInputDialog(null, "Digite o código do filme para a exclusão", "Excluir Filme", JOptionPane.INFORMATION_MESSAGE);
 
+        // Para interromper a execusão do código abaixo;
+        if(codFilme == null){
+            return;
+        }
+        
         try {
             // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             int retorno = new FestivalCinemaGramadoDao().excluirSubmissaoFilmes(codFilme);
@@ -539,6 +572,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Pegando o código do evento para a alteração;
         id_evt_paral = JOptionPane.showInputDialog(null, "Digite o código do evento para a alteração", "Alterar Evento Paralelo", JOptionPane.INFORMATION_MESSAGE);
 
+        // Para interromper a execusão do código abaixo;
+        if(id_evt_paral == null){
+            return;
+        }
+        
         try {
             // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet evento = new FestivalCinemaGramadoDao().buscarEventosParalelos(id_evt_paral);
@@ -575,6 +613,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Pegando o código do evento paralelo;
         id_evt_paral = JOptionPane.showInputDialog(null, "Digite o código do evento para a busca", "Buscar evento paralelo", JOptionPane.INFORMATION_MESSAGE);
 
+        // Para interromper a execusão do código abaixo;
+        if(id_evt_paral == null){
+            return;
+        }
+        
         try {
             // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet evento = new FestivalCinemaGramadoDao().buscarEventosParalelos(id_evt_paral);
@@ -596,10 +639,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "ID: " + id
                         + "\n" + "Nome do evento: " + nome
                         + "\n" + "Responsável: " + responsavel
-                        + "\n" + "Informações: " + info
                         + "\n" + "Local: " + local_evt
                         + "\n" + "Data: " + data_evt
-                        + "\n" + "Hora: " + hora_evt,
+                        + "\n" + "Hora: " + hora_evt
+                        + "\n" + "Informações: " + info,
                         "Busca Evento Paralelo", JOptionPane.INFORMATION_MESSAGE);
 
             } else { // Se o evento não for encontrado;
@@ -618,6 +661,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Pegando o código do evento paralelo;
         id_evt_paral = JOptionPane.showInputDialog(null, "Digite o código do evento para a exclusão", "Excluir Evento", JOptionPane.INFORMATION_MESSAGE);
 
+        // Para interromper a execusão do código abaixo;
+        if(id_evt_paral == null){
+            return;
+        }
+        
         try {
             // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             int retorno = new FestivalCinemaGramadoDao().excluirEventosParalelos(id_evt_paral);
@@ -641,6 +689,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Pegando o código da programação;
         codProgramacao = JOptionPane.showInputDialog(null, "Digite o código da programação para busca-lo", "Buscar Programação", JOptionPane.INFORMATION_MESSAGE);
 
+        // Para interromper a execusão do código abaixo;
+        if(codProgramacao == null){
+            return;
+        }
+        
         try {
             // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet programacao = new FestivalCinemaGramadoDao().buscarProgramacao(codProgramacao);
@@ -682,6 +735,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Pegando o código da programação;
         codProgramacao = JOptionPane.showInputDialog(null, "Digite o código da programação para busca-lo", "Buscar Programação", JOptionPane.INFORMATION_MESSAGE);
 
+        // Para interromper a execusão do código abaixo;
+        if(codProgramacao == null){
+            return;
+        }
+        
         try {
             // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             ResultSet programacao = new FestivalCinemaGramadoDao().buscarProgramacao(codProgramacao);
@@ -717,6 +775,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Pegando o código da programação;
         codProgramacao = JOptionPane.showInputDialog(null, "Digite o código da programação para a sua exclusão", "Excluir Programação", JOptionPane.INFORMATION_MESSAGE);
 
+        // Para interromper a execusão do código abaixo;
+        if(codProgramacao == null){
+            return;
+        }
+        
         try {
             // Instanciando a classe dao que contém a parte da conexão e os comandos SQL;
             int retorno = new FestivalCinemaGramadoDao().excluirProgramacao(codProgramacao);

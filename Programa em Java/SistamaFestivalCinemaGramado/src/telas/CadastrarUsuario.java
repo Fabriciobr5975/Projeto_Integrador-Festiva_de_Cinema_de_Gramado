@@ -45,8 +45,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         lblTipoUsuario = new javax.swing.JLabel();
         cmbTipoUsuario = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastrar-Se");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastrar-se");
         getContentPane().setLayout(null);
 
         lblNome.setText("Nome:");
@@ -74,7 +74,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCadastrar);
-        btnCadastrar.setBounds(260, 250, 110, 30);
+        btnCadastrar.setBounds(250, 260, 110, 30);
 
         lblCpf.setText("CPF:");
         getContentPane().add(lblCpf);
@@ -109,7 +109,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         email = txtEmail.getText();
         senha = txtSenha.getText();
         tipoUsu = (String) cmbTipoUsuario.getSelectedItem();
-
+        
         try {
             new FestivalCinemaGramadoDao().cadastrarUsuarios(nome, sobrenome, email, senha, cpf, tipoUsu);
 
@@ -117,6 +117,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Usuário cadastro com sucesso", "Usuário Cadastrado", JOptionPane.INFORMATION_MESSAGE);
             dispose(); // Fechar a tela após a mensagem;
             new Login().setVisible(true);
+            dispose();
             
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Entre em contato com o suporte e informe o erro: " + ex.getMessage());

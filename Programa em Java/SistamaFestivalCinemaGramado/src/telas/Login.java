@@ -57,7 +57,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtEmail);
-        txtEmail.setBounds(80, 30, 360, 30);
+        txtEmail.setBounds(80, 30, 400, 30);
 
         pswSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -65,7 +65,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(pswSenha);
-        pswSenha.setBounds(80, 100, 360, 30);
+        pswSenha.setBounds(80, 100, 400, 30);
 
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,11 +79,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEntrar);
-        btnEntrar.setBounds(190, 170, 90, 30);
+        btnEntrar.setBounds(210, 170, 90, 30);
 
+        lblMsgCadastro.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         lblMsgCadastro.setText("Não tem cadastro? Faça o seu cadastro agora mesmo!");
         getContentPane().add(lblMsgCadastro);
-        lblMsgCadastro.setBounds(30, 240, 290, 30);
+        lblMsgCadastro.setBounds(20, 240, 350, 30);
 
         bntAbrirTelaCadastro.setText("Cadastre-se");
         bntAbrirTelaCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -92,9 +93,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bntAbrirTelaCadastro);
-        bntAbrirTelaCadastro.setBounds(330, 240, 100, 30);
+        bntAbrirTelaCadastro.setBounds(370, 240, 100, 30);
 
-        setSize(new java.awt.Dimension(489, 314));
+        setSize(new java.awt.Dimension(523, 325));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -131,7 +132,6 @@ public class Login extends javax.swing.JFrame {
 
     private void bntAbrirTelaCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAbrirTelaCadastroActionPerformed
         new CadastrarUsuario().setVisible(true); // Abrir a tela de cadastro de usuários caso o usuário não tenha um login
-        dispose(); // Fechar a tela atual após a tela de cadastrar usuário ser carregada e aberta
     }//GEN-LAST:event_bntAbrirTelaCadastroActionPerformed
 
     private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed

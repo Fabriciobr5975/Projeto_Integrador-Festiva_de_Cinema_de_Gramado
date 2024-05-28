@@ -69,45 +69,46 @@ public class AlterarEventosParalelos extends javax.swing.JFrame {
 
         lblEvento.setText("Evento:");
         getContentPane().add(lblEvento);
-        lblEvento.setBounds(20, 100, 50, 40);
+        lblEvento.setBounds(20, 90, 50, 30);
         getContentPane().add(txtEvento);
-        txtEvento.setBounds(110, 100, 450, 40);
+        txtEvento.setBounds(80, 90, 480, 30);
 
         lblResponsavel.setText("Responsável:");
         getContentPane().add(lblResponsavel);
-        lblResponsavel.setBounds(20, 170, 70, 40);
+        lblResponsavel.setBounds(20, 270, 90, 30);
         getContentPane().add(txtResponsavel);
-        txtResponsavel.setBounds(110, 170, 450, 40);
+        txtResponsavel.setBounds(110, 270, 450, 30);
 
         lblData.setText("Data:");
         getContentPane().add(lblData);
-        lblData.setBounds(20, 240, 50, 40);
+        lblData.setBounds(20, 210, 50, 30);
         getContentPane().add(txtData);
-        txtData.setBounds(110, 240, 180, 40);
+        txtData.setBounds(80, 210, 190, 30);
 
         lblHora.setText("Hora:");
         getContentPane().add(lblHora);
-        lblHora.setBounds(330, 240, 70, 40);
+        lblHora.setBounds(310, 210, 70, 30);
         getContentPane().add(txtHora);
-        txtHora.setBounds(380, 240, 180, 40);
+        txtHora.setBounds(370, 210, 190, 30);
 
         lblInformacoes.setText("Informações:");
         getContentPane().add(lblInformacoes);
-        lblInformacoes.setBounds(20, 420, 70, 40);
+        lblInformacoes.setBounds(20, 380, 70, 40);
         getContentPane().add(txtLocal);
-        txtLocal.setBounds(110, 310, 450, 40);
+        txtLocal.setBounds(80, 150, 480, 30);
 
         lblLocal.setText("Local:");
         getContentPane().add(lblLocal);
-        lblLocal.setBounds(20, 310, 50, 40);
+        lblLocal.setBounds(20, 150, 50, 30);
 
         txtInformacoes.setColumns(20);
+        txtInformacoes.setLineWrap(true);
         txtInformacoes.setRows(5);
         txtInformacoes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(txtInformacoes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(110, 380, 450, 120);
+        jScrollPane1.setBounds(110, 340, 450, 130);
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,15 +117,15 @@ public class AlterarEventosParalelos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(220, 530, 190, 50);
+        btnSalvar.setBounds(220, 530, 170, 30);
 
         lblId.setText("ID:");
         getContentPane().add(lblId);
-        lblId.setBounds(20, 30, 50, 40);
+        lblId.setBounds(20, 30, 40, 30);
         getContentPane().add(txtId);
-        txtId.setBounds(110, 30, 450, 40);
+        txtId.setBounds(80, 30, 480, 30);
 
-        setSize(new java.awt.Dimension(630, 629));
+        setSize(new java.awt.Dimension(615, 620));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

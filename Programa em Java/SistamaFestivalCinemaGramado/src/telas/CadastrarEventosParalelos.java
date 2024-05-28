@@ -30,6 +30,7 @@ public class CadastrarEventosParalelos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnSalvar = new javax.swing.JButton();
         lblEvento = new javax.swing.JLabel();
         txtEvento = new javax.swing.JTextField();
         lblResponsavel = new javax.swing.JLabel();
@@ -43,54 +44,12 @@ public class CadastrarEventosParalelos extends javax.swing.JFrame {
         lblLocal = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtInformacoes = new javax.swing.JTextArea();
-        btnSalvar = new javax.swing.JButton();
         lblId = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de eventos paralelos");
         getContentPane().setLayout(null);
-
-        lblEvento.setText("Evento:");
-        getContentPane().add(lblEvento);
-        lblEvento.setBounds(40, 90, 50, 40);
-        getContentPane().add(txtEvento);
-        txtEvento.setBounds(120, 90, 420, 40);
-
-        lblResponsavel.setText("Responsável:");
-        getContentPane().add(lblResponsavel);
-        lblResponsavel.setBounds(40, 160, 70, 40);
-        getContentPane().add(txtResponsavel);
-        txtResponsavel.setBounds(120, 160, 420, 40);
-
-        lblData.setText("Data:");
-        getContentPane().add(lblData);
-        lblData.setBounds(40, 230, 50, 40);
-        getContentPane().add(txtData);
-        txtData.setBounds(120, 230, 170, 40);
-
-        lblHora.setText("Hora:");
-        getContentPane().add(lblHora);
-        lblHora.setBounds(320, 230, 70, 40);
-        getContentPane().add(txtHora);
-        txtHora.setBounds(360, 230, 180, 40);
-
-        lblInformacoes.setText("Informações:");
-        getContentPane().add(lblInformacoes);
-        lblInformacoes.setBounds(40, 400, 70, 40);
-        getContentPane().add(txtLocal);
-        txtLocal.setBounds(120, 290, 420, 40);
-
-        lblLocal.setText("Local:");
-        getContentPane().add(lblLocal);
-        lblLocal.setBounds(40, 290, 50, 40);
-
-        txtInformacoes.setColumns(20);
-        txtInformacoes.setRows(5);
-        jScrollPane1.setViewportView(txtInformacoes);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(120, 360, 420, 120);
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,15 +58,58 @@ public class CadastrarEventosParalelos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(230, 530, 190, 50);
+        btnSalvar.setBounds(220, 530, 170, 30);
+
+        lblEvento.setText("Evento:");
+        getContentPane().add(lblEvento);
+        lblEvento.setBounds(20, 90, 50, 30);
+        getContentPane().add(txtEvento);
+        txtEvento.setBounds(80, 90, 480, 30);
+
+        lblResponsavel.setText("Responsável:");
+        getContentPane().add(lblResponsavel);
+        lblResponsavel.setBounds(20, 270, 70, 30);
+        getContentPane().add(txtResponsavel);
+        txtResponsavel.setBounds(110, 270, 450, 30);
+
+        lblData.setText("Data:");
+        getContentPane().add(lblData);
+        lblData.setBounds(20, 210, 50, 30);
+        getContentPane().add(txtData);
+        txtData.setBounds(80, 210, 190, 30);
+
+        lblHora.setText("Hora:");
+        getContentPane().add(lblHora);
+        lblHora.setBounds(310, 210, 70, 30);
+        getContentPane().add(txtHora);
+        txtHora.setBounds(370, 210, 190, 30);
+
+        lblInformacoes.setText("Informações:");
+        getContentPane().add(lblInformacoes);
+        lblInformacoes.setBounds(20, 370, 70, 40);
+        getContentPane().add(txtLocal);
+        txtLocal.setBounds(80, 150, 480, 30);
+
+        lblLocal.setText("Local:");
+        getContentPane().add(lblLocal);
+        lblLocal.setBounds(20, 150, 50, 30);
+
+        txtInformacoes.setColumns(20);
+        txtInformacoes.setLineWrap(true);
+        txtInformacoes.setRows(5);
+        txtInformacoes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jScrollPane1.setViewportView(txtInformacoes);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(110, 330, 450, 130);
 
         lblId.setText("ID:");
         getContentPane().add(lblId);
-        lblId.setBounds(40, 30, 50, 40);
+        lblId.setBounds(20, 30, 40, 30);
         getContentPane().add(txtId);
-        txtId.setBounds(120, 30, 420, 40);
+        txtId.setBounds(80, 30, 480, 30);
 
-        setSize(new java.awt.Dimension(630, 629));
+        setSize(new java.awt.Dimension(618, 629));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

@@ -30,6 +30,7 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnSalvar = new javax.swing.JButton();
         lblFilme = new javax.swing.JLabel();
         txtFilme = new javax.swing.JTextField();
         lblDuracao = new javax.swing.JLabel();
@@ -45,7 +46,6 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
         lblNomeDiretor = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtInformacoes = new javax.swing.JTextArea();
-        btnSalvar = new javax.swing.JButton();
         lblCod = new javax.swing.JLabel();
         txtCod = new javax.swing.JTextField();
 
@@ -53,96 +53,7 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
         setTitle("Cadastro da submissão de filmes");
         getContentPane().setLayout(null);
 
-        lblFilme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblFilme.setText("Filme:");
-        getContentPane().add(lblFilme);
-        lblFilme.setBounds(10, 100, 50, 40);
-
-        txtFilme.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFilmeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtFilme);
-        txtFilme.setBounds(90, 100, 640, 40);
-
-        lblDuracao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblDuracao.setText("Duração:");
-        getContentPane().add(lblDuracao);
-        lblDuracao.setBounds(10, 170, 80, 40);
-
-        txtDuracao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDuracaoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtDuracao);
-        txtDuracao.setBounds(90, 170, 120, 40);
-
-        lblClassificacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblClassificacao.setText("Classificação:");
-        getContentPane().add(lblClassificacao);
-        lblClassificacao.setBounds(230, 170, 90, 40);
-
-        txtClassificacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtClassificacaoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtClassificacao);
-        txtClassificacao.setBounds(330, 170, 130, 40);
-
-        lblGenero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblGenero.setText("Gênero:");
-        getContentPane().add(lblGenero);
-        lblGenero.setBounds(480, 170, 60, 40);
-
-        txtGenero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGeneroActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtGenero);
-        txtGenero.setBounds(540, 170, 190, 40);
-
-        lblSobrenomeDiretor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblSobrenomeDiretor.setText("Sobrenome Diretor:");
-        getContentPane().add(lblSobrenomeDiretor);
-        lblSobrenomeDiretor.setBounds(370, 240, 140, 40);
-
-        txtNomeDiretor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeDiretorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtNomeDiretor);
-        txtNomeDiretor.setBounds(120, 240, 220, 40);
-
-        txtSobrenomeDiretor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSobrenomeDiretorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtSobrenomeDiretor);
-        txtSobrenomeDiretor.setBounds(510, 240, 220, 40);
-
-        lblInformacoes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblInformacoes.setText("Informações:");
-        getContentPane().add(lblInformacoes);
-        lblInformacoes.setBounds(10, 320, 90, 40);
-
-        lblNomeDiretor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNomeDiretor.setText("Nome Diretor:");
-        getContentPane().add(lblNomeDiretor);
-        lblNomeDiretor.setBounds(10, 240, 90, 40);
-
-        txtInformacoes.setColumns(20);
-        txtInformacoes.setRows(5);
-        jScrollPane1.setViewportView(txtInformacoes);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(120, 320, 610, 120);
-
+        btnSalvar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,42 +61,109 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(280, 490, 230, 40);
+        btnSalvar.setBounds(270, 490, 230, 40);
+
+        lblFilme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblFilme.setText("Filme:");
+        getContentPane().add(lblFilme);
+        lblFilme.setBounds(20, 100, 50, 30);
+
+        txtFilme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFilmeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtFilme);
+        txtFilme.setBounds(130, 100, 560, 30);
+
+        lblDuracao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDuracao.setText("Duração:");
+        getContentPane().add(lblDuracao);
+        lblDuracao.setBounds(20, 170, 70, 30);
+
+        txtDuracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDuracaoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtDuracao);
+        txtDuracao.setBounds(130, 170, 110, 30);
+
+        lblClassificacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblClassificacao.setText("Classificação:");
+        getContentPane().add(lblClassificacao);
+        lblClassificacao.setBounds(270, 170, 90, 30);
+
+        txtClassificacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClassificacaoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtClassificacao);
+        txtClassificacao.setBounds(360, 170, 80, 30);
+
+        lblGenero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblGenero.setText("Gênero:");
+        getContentPane().add(lblGenero);
+        lblGenero.setBounds(460, 170, 60, 30);
+
+        txtGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGeneroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtGenero);
+        txtGenero.setBounds(520, 170, 170, 30);
+
+        lblSobrenomeDiretor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSobrenomeDiretor.setText("Sobrenome Diretor:");
+        getContentPane().add(lblSobrenomeDiretor);
+        lblSobrenomeDiretor.setBounds(350, 240, 130, 30);
+
+        txtNomeDiretor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeDiretorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNomeDiretor);
+        txtNomeDiretor.setBounds(130, 240, 200, 30);
+
+        txtSobrenomeDiretor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSobrenomeDiretorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtSobrenomeDiretor);
+        txtSobrenomeDiretor.setBounds(490, 240, 200, 30);
+
+        lblInformacoes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblInformacoes.setText("Informações:");
+        getContentPane().add(lblInformacoes);
+        lblInformacoes.setBounds(20, 340, 90, 30);
+
+        lblNomeDiretor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNomeDiretor.setText("Nome Diretor:");
+        getContentPane().add(lblNomeDiretor);
+        lblNomeDiretor.setBounds(20, 240, 90, 30);
+
+        txtInformacoes.setColumns(20);
+        txtInformacoes.setLineWrap(true);
+        txtInformacoes.setRows(5);
+        jScrollPane1.setViewportView(txtInformacoes);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(130, 310, 560, 120);
 
         lblCod.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblCod.setText("Código:");
         getContentPane().add(lblCod);
-        lblCod.setBounds(10, 30, 70, 40);
+        lblCod.setBounds(20, 30, 70, 30);
         getContentPane().add(txtCod);
-        txtCod.setBounds(90, 30, 640, 40);
+        txtCod.setBounds(130, 30, 560, 30);
 
-        setSize(new java.awt.Dimension(770, 602));
+        setSize(new java.awt.Dimension(746, 602));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilmeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFilmeActionPerformed
-
-    private void txtDuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuracaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDuracaoActionPerformed
-
-    private void txtClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClassificacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtClassificacaoActionPerformed
-
-    private void txtGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGeneroActionPerformed
-
-    private void txtNomeDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeDiretorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeDiretorActionPerformed
-
-    private void txtSobrenomeDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSobrenomeDiretorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSobrenomeDiretorActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // Variáveis;
@@ -235,6 +213,30 @@ public class CadastrarSubmissaoFilmes extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void txtFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilmeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFilmeActionPerformed
+
+    private void txtDuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuracaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDuracaoActionPerformed
+
+    private void txtClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClassificacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClassificacaoActionPerformed
+
+    private void txtGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGeneroActionPerformed
+
+    private void txtNomeDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeDiretorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeDiretorActionPerformed
+
+    private void txtSobrenomeDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSobrenomeDiretorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSobrenomeDiretorActionPerformed
 
     /**
      * @param args the command line arguments

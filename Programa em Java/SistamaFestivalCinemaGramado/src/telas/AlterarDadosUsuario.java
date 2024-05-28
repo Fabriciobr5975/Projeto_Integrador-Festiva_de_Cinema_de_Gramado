@@ -59,6 +59,7 @@ public class AlterarDadosUsuario extends javax.swing.JFrame {
         btnSalvarAlteracoes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Alterar os Dados de Usuário");
         getContentPane().setLayout(null);
 
         lblNome.setText("Nome:");
