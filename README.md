@@ -1,22 +1,22 @@
 <h1> 
   <span>Sistema para o Festiva de Cinema de Gramado</span> 
 </h1>
-Repositório desenvolvido para a matéria de Projeto Integrador, contendo os arquivos do projeto <strong> Festival de Cinema de Gramado. </strong> 
+Repositório desenvolvido para a matéria Projeto Integrador, do professor Evandro Carlos Teruel, contendo os arquivos do projeto: <strong>Sistema para o Festival de Cinema de Gramado</strong> 
 
 ## Objetivo 🎯
-Apresentar um sistema desktop feito em java, utilizando sistemas de gerenciamento de banco de dados <strong>(SGBD)</strong> para a manipulação dos dados 
+Apresentar um sistema desktop feito em java, utilizando sistemas de gerenciamento de banco de dados <strong>(SGBD)</strong> para a realização do CRUD (Create, Read, Update, Delete) dentro do aplicativo 
 
 ## Ferramentas utilizadas ⚒️
 <ul> 
   <li><Strong>Java</Strong> - Para o front-end e o back-end</li>
-  <li><Strong>brModelo</Strong> - Para a modelagem do Banco de Dados</li>
-  <li><Strong>Microsoft</Strong> - Azure para armazenar o Banco de Dados na nuvem</li>
+  <li><Strong>brModelo</Strong> - Para a modelagem conceitual e lógica do Banco de Dados</li>
+  <li><Strong>Microsoft Azure</Strong> - Servidor na nuvem da Microsoft, chamada de Azure para armazenar o Banco de Dados</li>
   <li><Strong>MySQL</Strong> - Sistema de Gerenciamento de Banco de Dados (SGBD)</li>
   <li><Strong>Visual Studio</Strong> - Para a manipulação do Banco de Dados através de uma extensão para o MySQL</li>
 </ul>
 
 ## Como funciona o nosso sistema 💻
-<p>O nosso sistema facilita algumas ações que nosso usuário teriam que fazer pessoalmente, com essa aplicação os mesmos agora podem se cadastrar e ter acesso a vários recursos interessantes, por enquanto não temos muitos recursos pelo tempo que tivemos para o projeto, porém conseguimos trazer alguns recursos interessantes e úteis. Para cada tipo de usuário do sistema temos as funcionalidades, no nosso sistema temos como público-alvo os fequentadores do evento, os cineastas, os avaliadores dos filmes e a equipe que cuida do evento, então de acordo com cada tipo de usuário citada estão delitadas as ações que cada um pode fazer. Abaixo terá uma pequena lista com os recursos presentes em nossa aplicação:</p>
+<p>O nosso sistema facilita algumas ações que nosso usuário teriam que fazer pessoalmente, com essa aplicação os mesmos agora podem se cadastrar e ter acesso a vários recursos interessantes, o nosso principal objetivo foi fazer um aplicativo em Java que fosse simples e intuitivo com foco em transformar atividades que são feitas de forma presencial, que é mais lento, para o on-line que é bem mais rápido. Para cada tipo de usuário do sistema temos as funcionalidades, no nosso sistema temos como público-alvo os fequentadores do evento, os cineastas, os avaliadores dos filmes e a equipe que cuida do evento, então de acordo com cada tipo de usuário citada estão delitadas as ações que cada um pode fazer. Abaixo terá uma pequena lista com os recursos presentes em nossa aplicação:</p>
 
 <ul> 
   <h3>Fequentadores do Evento e outros usuários</h3>
@@ -34,12 +34,12 @@ Apresentar um sistema desktop feito em java, utilizando sistemas de gerenciament
   <li>Aletar Eventos Paralelos - Seguindo a mesma lógica da alteração dos dados do filme, os cineastas podem alterar algumas informações do seu evento paralelo, caso haja necessidade</li>
 
   <h3>Avaliadores dos Filmes</h3>
-  Os avaliadores iram avaliar os filmes, baseado-se em alguns critérios, porém ainda não temos as telas para os avaliadores podem dar as suas notas, os mesmos só podem se cadastrar no evento.
+  <li>Os avaliadores iram avaliar os filmes, baseado-se em alguns critérios, no entanto, não foram criadas as telas para os que avaliadores podem dar as avaliações sobre os filmes, no momento eles apenas podem ser cadastrar-se</li>
 
   <h3>Equipe do Evento</h3>
-  A equipe tem acesso a básicamente todo o sistema, pois ele cuidaram do controle de fluxo do evento e precisam ter acesso a certas telas, como por exemplo telas para excluir usuários, programações, eventos paralelos, filmes entre outras telas. A equipe não tem acesso ao Banco de Dados, pois o mesmo fica sob responsabilidade dos Administradores do Evento.
+  <li>A equipe do evento tem acesso a básicamente todo o sistema, já que eles atuam no controle e gerenciamente do evento, cuidando que as atividades ocorram sem interrupções durante o festival, para isso eles recebem um acesso maior, podendo acessar telas que um usuário comum não tem, como por exemplo telas para excluir usuários, programações, eventos paralelos, filmes entre outras telas. A equipe não tem acesso ao Banco de Dados, pois o mesmo fica sob responsabilidade dos Administradores do Evento</li>
 </ul>
 
 ##
-<div align="center">Feito por <a tex href="https://github.com/Fabriciobr5975"> Fabrício A. Santana</a> e <a href="https://github.com/Ruanlv"> Ruan Lopes Viana</a> .</div>
+<div align="center">Feito por <a tex href="https://github.com/Fabriciobr5975"> Fabrício de Araujo Santana</a> e <a href="https://github.com/Ruanlv"> Ruan Lopes Viana</a> .</div>
 
