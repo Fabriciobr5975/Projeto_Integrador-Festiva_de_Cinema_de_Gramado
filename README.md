@@ -41,5 +41,5 @@ Apresentar um sistema desktop feito em java, utilizando sistemas de gerenciament
 </ul>
 
 ##
-<div align="center">Feito por <a tex href="https://github.com/Fabriciobr5975"> Fabrício de Araujo Santana</a> e <a href="https://github.com/Ruanlv"> Ruan Lopes Viana</a> .</div>
+<div align="center">Feito por <a tex href="https://github.com/Fabriciobr5975"> Fabrício de Araújo Santana</a> e <a href="https://github.com/Ruanlv"> Ruan Lopes Viana</a> .</div>
 
