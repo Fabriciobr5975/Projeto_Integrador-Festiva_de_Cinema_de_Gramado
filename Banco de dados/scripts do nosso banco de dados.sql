@@ -1,3 +1,4 @@
+---- Criando o nosso Banco de dados ----
 CREATE DATABASE festival;
 
 ---- OBS: As tabelas necessárias para o funcionamento do sistema estão citadas abaixo: ----
