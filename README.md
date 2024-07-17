@@ -1,5 +1,5 @@
 <h1> 
-  <span>Sistema para o Festiva de Cinema de Gramado</span> 
+  <span>Sistema para o Festival de Cinema de Gramado</span> 
 </h1>
 Repositório desenvolvido para a matéria Projeto Integrador, do professor Evandro Carlos Teruel, contendo os arquivos do projeto: <strong>Sistema para o Festival de Cinema de Gramado</strong> 
 
